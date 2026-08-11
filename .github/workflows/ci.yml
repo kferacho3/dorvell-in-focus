@@ -1,0 +1,171 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '22'
+  PNPM_VERSION: '10.28.2'
+
+jobs:
+  quality:
+    name: Lint · typecheck · unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ferg_in_focus_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URI: postgres://postgres:postgres@localhost:5432/ferg_in_focus_test
+      PAYLOAD_SECRET: ci-only-not-a-real-secret
+      PREVIEW_SECRET: ci-only-not-a-real-secret
+      CRON_SECRET: ci-only-not-a-real-secret
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Format check
+        run: pnpm format:check
+
+      - name: Apply migrations
+        run: pnpm cms:migrate
+
+      - name: Verify generated types are current
+        run: |
+          pnpm cms:types
+          if ! git diff --exit-code payload-types.ts; then
+            echo "::error::payload-types.ts is stale. Run 'pnpm cms:types' and commit the result."
+            exit 1
+          fi
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit and integration tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Upload build output size report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: .next/analyze
+          if-no-files-found: ignore
+
+  e2e:
+    name: E2E · accessibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: quality
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ferg_in_focus_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URI: postgres://postgres:postgres@localhost:5432/ferg_in_focus_test
+      PAYLOAD_SECRET: ci-only-not-a-real-secret
+      PREVIEW_SECRET: ci-only-not-a-real-secret
+      CRON_SECRET: ci-only-not-a-real-secret
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+
+      - run: pnpm cms:migrate
+      - run: pnpm cms:seed
+      - run: pnpm build
+
+      - name: End-to-end and accessibility suites
+        run: pnpm test:e2e
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Scan history for committed secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Reject real values in .env.example
+        run: |
+          # The env contract documents NAMES ONLY. A populated value here is
+          # how credentials leak into a public repository.
+          if grep -nE '^(PAYLOAD_SECRET|DATABASE_URI|PREVIEW_SECRET|CRON_SECRET|AWS_ROLE_ARN|MUX_TOKEN_SECRET|MUX_SIGNING_PRIVATE_KEY|RESEND_API_KEY|NEWSLETTER_PROVIDER_KEY|SENTRY_DSN)=.+' .env.example; then
+            echo "::error::.env.example must contain variable names only, never values."
+            exit 1
+          fi

@@ -1,0 +1,60 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/tests/visual/**/*-actual.png
+/tests/visual/**/*-diff.png
+
+# payload
+/media
+/payload-types.ts.tmp
+
+# misc
+.DS_Store
+*.pem
+.vscode/
+.idea/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files — never commit real values
+.env
+.env*.local
+.env.development
+.env.production
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# generated media working data (large, regenerate via scripts/media)
+/data/*.jsonl
+/data/*.csv
+!/data/.gitkeep
+
+# local scratch
+/tmp/
+/.scratch/
