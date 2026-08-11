@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+@import '../styles/tokens.css';
+@import '../styles/typography.css';
+@import '../styles/motion.css';
+@import '../styles/print.css';
+
+/*
+ * Explicit scan roots. Tailwind 4 infers sources from the git tree, but naming
+ * them keeps the admin bundle's markup out of the publication's stylesheet and
+ * makes the intent legible.
+ */
+@source '../app/(site)';
+@source '../components';
+@source '../lib';
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* The shell reserves this; sticky headers and :target offsets read it. */
+    --header-height: 4.5rem;
+  }
+
+  @media (width >= 64rem) {
+    html {
+      --header-height: 5.5rem;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+  }
+
+  /* Media defaults to block so figures never inherit inline-baseline gaps. */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /*
+   * Dimensions come from the CMS for every editorial image, so an intrinsic
+   * aspect ratio is always available. This is the single largest lever on CLS.
+   */
+  img,
+  video {
+    height: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Long unbroken strings — URLs in source notes — must not force h-scroll. */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  li,
+  figcaption {
+    overflow-wrap: break-word;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-ink);
+  }
+}
+
+@utility skip-link {
+  position: absolute;
+  inset-inline-start: var(--shell-margin);
+  inset-block-start: 0;
+  z-index: 100;
+  transform: translateY(-120%);
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform var(--motion-quick) var(--ease-enter);
+
+  &:focus-visible {
+    transform: translateY(0.5rem);
+  }
+}
+
+/**
+ * Visually hidden, still announced. Used for the route announcer and for the
+ * accessible labels on the social rail's icon-only links.
+ */
+@utility sr-only-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

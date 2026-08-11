@@ -35,20 +35,40 @@ export default defineConfig({
   },
 
   projects: [
-    { name: 'mobile-360', use: { ...devices['Desktop Chrome'], viewport: { width: 360, height: 800 } } },
+    {
+      name: 'mobile-360',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 360, height: 800 } },
+    },
     { name: 'mobile-390', use: { ...devices['iPhone 14'] } },
-    { name: 'tablet-768', use: { ...devices['Desktop Chrome'], viewport: { width: 768, height: 1024 } } },
-    { name: 'laptop-1024', use: { ...devices['Desktop Chrome'], viewport: { width: 1024, height: 768 } } },
-    { name: 'desktop-1440', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 1000 } } },
-    { name: 'desktop-1920', use: { ...devices['Desktop Chrome'], viewport: { width: 1920, height: 1080 } } },
+    {
+      name: 'tablet-768',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 768, height: 1024 } },
+    },
+    {
+      name: 'laptop-1024',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1024, height: 768 } },
+    },
+    {
+      name: 'desktop-1440',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 1000 } },
+    },
+    {
+      name: 'desktop-1920',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1920, height: 1080 } },
+    },
 
     { name: 'safari', use: { ...devices['Desktop Safari'] } },
     { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
 
     {
       // Reduced motion is a first-class product state, not an afterthought.
+      // Playwright exposes it through contextOptions rather than as a
+      // top-level `use` key.
       name: 'reduced-motion',
-      use: { ...devices['Desktop Chrome'], reducedMotion: 'reduce' },
+      use: {
+        ...devices['Desktop Chrome'],
+        contextOptions: { reducedMotion: 'reduce' },
+      },
       testMatch: ['e2e/**/*.spec.ts', 'a11y/**/*.spec.ts'],
     },
     {

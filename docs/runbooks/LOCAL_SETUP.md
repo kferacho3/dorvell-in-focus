@@ -4,11 +4,11 @@ First-run procedure for a developer machine. Target time: under 15 minutes.
 
 ## 1. Prerequisites
 
-| Tool | Version | Check |
-| --- | --- | --- |
-| Node.js | ≥ 20.9 (developed on 25.x) | `node -v` |
-| pnpm | ≥ 10 | `pnpm -v` |
-| PostgreSQL | 17 | `psql --version` |
+| Tool       | Version                    | Check            |
+| ---------- | -------------------------- | ---------------- |
+| Node.js    | ≥ 20.9 (developed on 25.x) | `node -v`        |
+| pnpm       | ≥ 10                       | `pnpm -v`        |
+| PostgreSQL | 17                         | `psql --version` |
 
 ### Installing PostgreSQL 17 (macOS / Homebrew)
 
@@ -49,13 +49,13 @@ cp .env.example .env
 
 Fill in, at minimum:
 
-| Variable | Local value |
-| --- | --- |
-| `PAYLOAD_SECRET` | `openssl rand -base64 48` |
-| `DATABASE_URI` | `postgres://localhost:5432/ferg_in_focus` |
-| `PREVIEW_SECRET` | `openssl rand -hex 32` |
-| `CRON_SECRET` | `openssl rand -hex 32` |
-| `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` |
+| Variable               | Local value                               |
+| ---------------------- | ----------------------------------------- |
+| `PAYLOAD_SECRET`       | `openssl rand -base64 48`                 |
+| `DATABASE_URI`         | `postgres://localhost:5432/ferg_in_focus` |
+| `PREVIEW_SECRET`       | `openssl rand -hex 32`                    |
+| `CRON_SECRET`          | `openssl rand -hex 32`                    |
+| `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000`                   |
 
 Leave `NEXT_PUBLIC_MEDIA_URL` blank locally — media then resolves against the
 Next.js origin instead of CloudFront.

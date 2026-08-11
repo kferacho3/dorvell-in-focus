@@ -26,9 +26,7 @@ const nextConfig: NextConfig = {
     // ship a 4K source into a 320px card (plan §11.3).
     deviceSizes: [320, 480, 768, 1024, 1440, 1920, 2560],
     imageSizes: [16, 32, 64, 96, 128, 256, 384],
-    remotePatterns: mediaHost
-      ? [{ protocol: 'https', hostname: mediaHost }]
-      : [],
+    remotePatterns: mediaHost ? [{ protocol: 'https', hostname: mediaHost }] : [],
   },
 
   experimental: {
@@ -75,4 +73,6 @@ const nextConfig: NextConfig = {
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
 
-export default withBundleAnalyzer(withPayload(nextConfig, { devBundleServerPackages: false }))
+export default withBundleAnalyzer(
+  withPayload(nextConfig, { devBundleServerPackages: false }),
+)

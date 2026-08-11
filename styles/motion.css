@@ -1,0 +1,208 @@
+/**
+ * FERG IN FOCUS — motion contract
+ *
+ * Motion reveals hierarchy; it never replaces navigation (plan §5.1).
+ *
+ * The rules below are enforced in CSS rather than left to each component's
+ * discretion, because the failure mode we care about is systemic: one
+ * component forgetting reduced motion is how a publication becomes unusable
+ * for someone with a vestibular disorder.
+ *
+ * `data-motion` is written to <html> by MotionProvider and reflects the
+ * *resolved* preference — the explicit user choice when one exists, otherwise
+ * the system setting. A stored user preference intentionally overrides the OS
+ * (plan §5.7): someone may want full motion on a machine where the OS default
+ * is reduce, and that choice is theirs.
+ */
+
+@layer base {
+  :root {
+    --motion-instant: 80ms;
+    --motion-quick: 180ms;
+    --motion-base: 320ms;
+    --motion-route: 520ms;
+    --motion-feature: 720ms;
+
+    --motion-travel-micro: 8px;
+    --motion-travel-small: 16px;
+    --motion-travel-medium: 32px;
+  }
+
+  /* The reduced state. Durations collapse rather than rules being deleted, so
+   * a transition still *completes* and any transitionend handler still fires. */
+  [data-motion='reduced'] {
+    --motion-instant: 0.01ms;
+    --motion-quick: 0.01ms;
+    --motion-base: 0.01ms;
+    --motion-route: 0.01ms;
+    --motion-feature: 0.01ms;
+
+    --motion-travel-micro: 0px;
+    --motion-travel-small: 0px;
+    --motion-travel-medium: 0px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root:not([data-motion='full']) {
+      --motion-instant: 0.01ms;
+      --motion-quick: 0.01ms;
+      --motion-base: 0.01ms;
+      --motion-route: 0.01ms;
+      --motion-feature: 0.01ms;
+
+      --motion-travel-micro: 0px;
+      --motion-travel-small: 0px;
+      --motion-travel-medium: 0px;
+    }
+  }
+
+  /**
+   * The blanket override. Anything that slipped past the token system — a
+   * third-party widget, a hand-written keyframe, an autoplaying carousel — is
+   * caught here.
+   *
+   * `!important` is load-bearing rather than lazy: this rule has to beat
+   * inline styles written by GSAP at runtime, and there is no other mechanism
+   * that does. Scroll behavior is reset too, since smooth scrolling is itself
+   * a vestibular trigger.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    :root:not([data-motion='full']) *,
+    :root:not([data-motion='full']) *::before,
+    :root:not([data-motion='full']) *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  [data-motion='reduced'] *,
+  [data-motion='reduced'] *::before,
+  [data-motion='reduced'] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Native scroll everywhere. No smooth-scroll library in v1 (plan §5.6). */
+  html {
+    scroll-behavior: auto;
+  }
+
+  /*
+   * Sticky headers would otherwise hide the element an in-page anchor jumped
+   * to — and, worse, hide the focused element for keyboard users. WCAG 2.2
+   * calls that out specifically (2.4.11 Focus Not Obscured).
+   */
+  :target,
+  :focus-visible {
+    scroll-margin-block-start: var(--header-height, 5rem);
+  }
+}
+
+/* ---------------------------------------------------------- primitives -- */
+
+/**
+ * Entrance for editorial content. 8–24px of travel, once, on the way in
+ * (plan §3.7). Deliberately not a scroll-linked effect: content that keeps
+ * moving while it is being read is content that is harder to read.
+ */
+@utility enter-rise {
+  animation: ff-rise var(--motion-base) var(--ease-enter) both;
+}
+
+@utility enter-fade {
+  animation: ff-fade var(--motion-quick) var(--ease-enter) both;
+}
+
+@keyframes ff-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--motion-travel-medium), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ff-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * Focus resolving. The publication's namesake gesture: a low-resolution
+ * placeholder sharpening into the real image.
+ *
+ * This applies only while the real media is genuinely still loading. Animating
+ * a blur on an image that has already arrived is a fake delay dressed as
+ * craft, and the plan prohibits it (§3.4).
+ */
+@utility resolving {
+  filter: blur(12px);
+  transform: scale(1.02);
+  transition:
+    filter var(--motion-feature) var(--ease-enter),
+    transform var(--motion-feature) var(--ease-enter);
+}
+
+@utility resolved {
+  filter: blur(0);
+  transform: none;
+}
+
+/* ------------------------------------------------------ transition API -- */
+
+/**
+ * View Transitions are progressive enhancement, layered on top of ordinary
+ * Next.js navigation. If the API is missing, the browser navigates normally
+ * and the reader loses an effect, never a destination.
+ */
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion='reduced']) {
+      view-transition-name: none;
+    }
+
+    ::view-transition-group(*) {
+      animation-duration: var(--motion-route);
+      animation-timing-function: var(--ease-editorial);
+    }
+
+    /* The selected image is the one element that should appear to travel with
+     * the reader between routes. Everything else crossfades. */
+    ::view-transition-old(story-frame),
+    ::view-transition-new(story-frame) {
+      animation-duration: var(--motion-route);
+      mix-blend-mode: normal;
+    }
+  }
+
+  [data-motion='reduced'] ::view-transition-group(*),
+  [data-motion='reduced'] ::view-transition-old(*),
+  [data-motion='reduced'] ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* --------------------------------------------------------- performance -- */
+
+/**
+ * `will-change` is applied for the duration of an interaction and removed
+ * afterwards. Left on globally it permanently promotes layers and consumes GPU
+ * memory — the opposite of the intended optimization.
+ */
+@utility will-animate {
+  will-change: transform, opacity;
+}
+
+@utility animation-settled {
+  will-change: auto;
+}

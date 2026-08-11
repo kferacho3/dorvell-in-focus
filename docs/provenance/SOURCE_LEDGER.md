@@ -18,7 +18,7 @@ carried across) · `rejected`
 - **Lands in:** `components/navigation/ApertureMenu/` · Module A
 - **Status:** not-started
 
-**The transferable idea.** Not the polygon clip itself — the *reversibility*.
+**The transferable idea.** Not the polygon clip itself — the _reversibility_.
 The source rebuilds and reverses its animation so the interface stays smooth
 when a user changes their mind halfway through the reveal. Most menu
 implementations look correct only if the interaction is never interrupted.
@@ -118,7 +118,7 @@ is always real DOM text.
 - **Lands in:** `components/motion/FocusField/` · Module H
 - **Status:** not-started
 
-**The transferable idea.** The *mode interface*. One input/stroke system drives
+**The transferable idea.** The _mode interface_. One input/stroke system drives
 several visual outputs without rewriting the interaction plumbing. That
 internal contract is worth copying even though none of its visuals are:
 
@@ -130,7 +130,7 @@ input samples → normalized/resampled stroke → anchor coordinates
 ```
 
 **Concept if it ships.** A field of light, grain, registration marks, or soft
-optical traces where each stroke brings a layer *into focus*. An issue-cover
+optical traces where each stroke brings a layer _into focus_. An issue-cover
 experiment or About-page signature — never core navigation.
 
 **Gate.** Launches only after core editorial routes pass their performance and
@@ -186,7 +186,7 @@ grounded in multimedia journalism; experience and recognition references; and
 public social handles.
 
 **One technical pattern carried forward.** Modern image formats (AVIF/WebP)
-plus versioned immutable derivative caching — as a *principle*. Its routes and
+plus versioned immutable derivative caching — as a _principle_. Its routes and
 public-bucket assumptions are not reproduced.
 
 **Deliberately kept separate.** The "DF Archive" identity: the dark cinematic

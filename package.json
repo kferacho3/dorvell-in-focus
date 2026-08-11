@@ -56,7 +56,6 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
-    "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "16.3.0",
     "@playwright/test": "^1.56.1",
     "@tailwindcss/postcss": "4.3.3",
@@ -77,6 +76,11 @@
     "vitest": "^3.2.4"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["sharp", "esbuild", "@tailwindcss/oxide", "unrs-resolver"]
+    "onlyBuiltDependencies": [
+      "sharp",
+      "esbuild",
+      "@tailwindcss/oxide",
+      "unrs-resolver"
+    ]
   }
 }

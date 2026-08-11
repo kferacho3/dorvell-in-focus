@@ -9,20 +9,20 @@ stories rather than isolated posts.
 This is a custom-built editorial product. It is **not** a Blogger, Blogspot,
 WordPress, Squarespace, Wix, or theme-customization project, and it is not a
 second copy of [dorvellferguson.com](https://www.dorvellferguson.com/). That
-site is a factual and media *source*; this publication has its own domain,
+site is a factual and media _source_; this publication has its own domain,
 repository, design system, content model, CMS, motion language, and deployment.
 
 ---
 
 ## Channels
 
-| Channel | Stable route | Identity |
-| --- | --- | --- |
-| FERG Photography | `/photography` | The Light Table |
-| 4KFERG | `/motion` | The Screening Room |
-| Writing | `/stories` | Label is CMS-configurable |
-| Modeling | `/modeling` | Label is CMS-configurable |
-| FERG X | `/x` | Collaboration Case Files |
+| Channel          | Stable route   | Identity                  |
+| ---------------- | -------------- | ------------------------- |
+| FERG Photography | `/photography` | The Light Table           |
+| 4KFERG           | `/motion`      | The Screening Room        |
+| Writing          | `/stories`     | Label is CMS-configurable |
+| Modeling         | `/modeling`    | Label is CMS-configurable |
+| FERG X           | `/x`           | Collaboration Case Files  |
 
 The public labels for `/stories` and `/modeling` are **not final**. Routes are
 stable and neutral on purpose — renaming a channel is a CMS edit, never a route
@@ -57,18 +57,18 @@ pnpm dev
 
 ## Commands
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm dev` | Run the publication and admin locally |
-| `pnpm check` | Lint, typecheck, unit tests, and production build |
-| `pnpm test` | Unit and integration tests (Vitest) |
-| `pnpm test:e2e` | End-to-end tests (Playwright) |
-| `pnpm test:a11y` | Accessibility suite (axe + Playwright) |
-| `pnpm test:visual` | Visual regression snapshots |
-| `pnpm analyze` | Production build with bundle analysis |
-| `pnpm cms:migrate` | Apply Payload/Postgres migrations |
-| `pnpm cms:types` | Regenerate `payload-types.ts` |
-| `pnpm media:inventory` | Build the media manifest (dry run by default) |
+| Command                | Purpose                                           |
+| ---------------------- | ------------------------------------------------- |
+| `pnpm dev`             | Run the publication and admin locally             |
+| `pnpm check`           | Lint, typecheck, unit tests, and production build |
+| `pnpm test`            | Unit and integration tests (Vitest)               |
+| `pnpm test:e2e`        | End-to-end tests (Playwright)                     |
+| `pnpm test:a11y`       | Accessibility suite (axe + Playwright)            |
+| `pnpm test:visual`     | Visual regression snapshots                       |
+| `pnpm analyze`         | Production build with bundle analysis             |
+| `pnpm cms:migrate`     | Apply Payload/Postgres migrations                 |
+| `pnpm cms:types`       | Regenerate `payload-types.ts`                     |
+| `pnpm media:inventory` | Build the media manifest (dry run by default)     |
 
 Every `scripts/media/*` tool defaults to `--dry-run`, never overwrites a legacy
 S3 key, and writes a structured failure report.

@@ -23,15 +23,15 @@ the adaptation lives — is in
 
 ## Studied reference implementations
 
-| Source | License as published | Status | Notes |
-| --- | --- | --- | --- |
-| [codrops/EaseReverseClipMenu](https://github.com/codrops/EaseReverseClipMenu) | MIT | Technique reimplemented | Interruptible reversible clip reveal, focus/ARIA/Escape behavior. Demo media and composition excluded. |
-| [surya-aditya/codrops-infinite-scroll-and-content-transition](https://github.com/surya-aditya/codrops-infinite-scroll-and-content-transition) | **Unresolved** | Reimplemented from first principles | README links MIT; the extracted `package.json` declares ISC; the archive shipped no LICENSE file. Until the mismatch is resolved by the author, no code is copied. Only the general ideas — measured seamless looping and shared-element transition — are used, both independently implemented. |
-| [Ibaliqbal/codrops-motion-path-transition](https://github.com/Ibaliqbal/codrops-motion-path-transition) | MIT | Technique reimplemented | Responsive measured layout-to-layout paths with progress-preserving rebuild on resize. Demo assets excluded. |
-| [drcmda/the-substance](https://github.com/drcmda/the-substance) | MIT | Architectural reference only | DOM + scene layering and scroll-velocity-driven displacement. Its dependency stack (React experimental, react-scripts 3.2, an early react-three-fiber beta, three 0.111) is deliberately not adopted; concepts are rebuilt on the current stack. |
-| Geometry Painter (Three.js/WebGPU) | Per upstream | Architectural reference only | The transferable idea is the *mode interface*: one stroke/input system driving several visual outputs. Its crystal/reef visual identity is not used. |
-| Liquid Morphology slideshow (GSAP + Three.js) | Per upstream | Technique reimplemented | Texture-to-texture shader transition, DPR cap, hidden-tab pause. The forced preloader and CodePen imagery are excluded. |
-| GSAP MorphSVG curve manipulation | GSAP (see below) | Technique reimplemented | Short channel-color curtain. Never a loading screen, never blocking. |
+| Source                                                                                                                                        | License as published | Status                              | Notes                                                                                                                                                                                                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [codrops/EaseReverseClipMenu](https://github.com/codrops/EaseReverseClipMenu)                                                                 | MIT                  | Technique reimplemented             | Interruptible reversible clip reveal, focus/ARIA/Escape behavior. Demo media and composition excluded.                                                                                                                                                                                          |
+| [surya-aditya/codrops-infinite-scroll-and-content-transition](https://github.com/surya-aditya/codrops-infinite-scroll-and-content-transition) | **Unresolved**       | Reimplemented from first principles | README links MIT; the extracted `package.json` declares ISC; the archive shipped no LICENSE file. Until the mismatch is resolved by the author, no code is copied. Only the general ideas — measured seamless looping and shared-element transition — are used, both independently implemented. |
+| [Ibaliqbal/codrops-motion-path-transition](https://github.com/Ibaliqbal/codrops-motion-path-transition)                                       | MIT                  | Technique reimplemented             | Responsive measured layout-to-layout paths with progress-preserving rebuild on resize. Demo assets excluded.                                                                                                                                                                                    |
+| [drcmda/the-substance](https://github.com/drcmda/the-substance)                                                                               | MIT                  | Architectural reference only        | DOM + scene layering and scroll-velocity-driven displacement. Its dependency stack (React experimental, react-scripts 3.2, an early react-three-fiber beta, three 0.111) is deliberately not adopted; concepts are rebuilt on the current stack.                                                |
+| Geometry Painter (Three.js/WebGPU)                                                                                                            | Per upstream         | Architectural reference only        | The transferable idea is the _mode interface_: one stroke/input system driving several visual outputs. Its crystal/reef visual identity is not used.                                                                                                                                            |
+| Liquid Morphology slideshow (GSAP + Three.js)                                                                                                 | Per upstream         | Technique reimplemented             | Texture-to-texture shader transition, DPR cap, hidden-tab pause. The forced preloader and CodePen imagery are excluded.                                                                                                                                                                         |
+| GSAP MorphSVG curve manipulation                                                                                                              | GSAP (see below)     | Technique reimplemented             | Short channel-color curtain. Never a loading screen, never blocking.                                                                                                                                                                                                                            |
 
 ## Runtime dependencies
 
@@ -44,16 +44,16 @@ pnpm licenses list --prod
 
 Notable direct dependencies:
 
-| Package | License |
-| --- | --- |
-| `next` | MIT |
-| `react`, `react-dom` | MIT |
-| `payload` and `@payloadcms/*` | MIT |
-| `tailwindcss` | MIT |
-| `sharp` | Apache-2.0 |
-| `graphql` | MIT |
-| `zod` | MIT |
-| `gsap` | See below |
+| Package                       | License    |
+| ----------------------------- | ---------- |
+| `next`                        | MIT        |
+| `react`, `react-dom`          | MIT        |
+| `payload` and `@payloadcms/*` | MIT        |
+| `tailwindcss`                 | MIT        |
+| `sharp`                       | Apache-2.0 |
+| `graphql`                     | MIT        |
+| `zod`                         | MIT        |
+| `gsap`                        | See below  |
 
 ### GSAP
 
@@ -76,11 +76,11 @@ SplitText. Any plugin outside that list requires a decision record.
 The prototype type system uses open-source families pending a licensed
 selection after brand approval:
 
-| Face | Role | License |
-| --- | --- | --- |
-| Instrument Serif | Display editorial serif | SIL Open Font License 1.1 |
-| Geist | Body, UI, navigation | SIL Open Font License 1.1 |
-| IBM Plex Mono | Metadata, runtimes, issue numbers | SIL Open Font License 1.1 |
+| Face             | Role                              | License                   |
+| ---------------- | --------------------------------- | ------------------------- |
+| Instrument Serif | Display editorial serif           | SIL Open Font License 1.1 |
+| Geist            | Body, UI, navigation              | SIL Open Font License 1.1 |
+| IBM Plex Mono    | Metadata, runtimes, issue numbers | SIL Open Font License 1.1 |
 
 Commercial webfont rights are confirmed before production for any licensed
 replacement. Fonts are self-hosted as subset WOFF2.

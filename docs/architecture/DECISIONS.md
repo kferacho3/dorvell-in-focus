@@ -46,7 +46,7 @@ publishing, live preview, media metadata, and role-based access.
 **Why.** Payload 3 runs natively inside the App Router, which removes the usual
 headless-CMS seam: no separate service to deploy, no API round trip for
 server-rendered pages (the Local API queries the database directly), and live
-preview renders the *actual* production components rather than an approximation.
+preview renders the _actual_ production components rather than an approximation.
 
 Compatibility was verified rather than assumed — `@payloadcms/next@3.88.0`
 declares `next: ">=16.2.6 <17.0.0"`, so Next 16.3.0 is inside the supported

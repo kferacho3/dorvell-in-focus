@@ -1,0 +1,114 @@
+/**
+ * FERG IN FOCUS — print
+ *
+ * Stories are reported, sourced work. People print them, save them as PDFs,
+ * and file them. A print stylesheet is an accessibility requirement in the
+ * plan (§12.2), not a nicety.
+ *
+ * The governing idea: print restores the document to a plain reading order.
+ * Navigation, motion, and interactive chrome disappear; captions, credits,
+ * source notes, and link destinations survive.
+ */
+
+@media print {
+  @page {
+    margin: 18mm 16mm;
+  }
+
+  :root {
+    --channel-bg: #ffffff;
+    --channel-fg: #000000;
+    --channel-muted: #444444;
+    --channel-rule: #cccccc;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Interactive chrome carries no meaning on paper. */
+  [data-print='hide'],
+  header[data-site-header],
+  nav[data-channel-nav],
+  [data-social-rail],
+  [data-aperture-menu],
+  [data-reading-progress],
+  [data-newsletter-cta],
+  [data-related-stories],
+  footer[data-site-footer],
+  video,
+  canvas,
+  iframe {
+    display: none !important;
+  }
+
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /*
+   * A printed page cannot be clicked. Without this, every reference in a
+   * sourced article silently loses its destination — which for reported work
+   * is a loss of evidence, not styling.
+   */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.82em;
+    color: #555555;
+    word-break: break-all;
+  }
+
+  /* Internal links are noise on paper; the document is self-contained. */
+  a[href^='/']::after,
+  a[href^='#']::after {
+    content: '';
+  }
+
+  figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  figcaption {
+    font-size: 9pt;
+    color: #333333;
+    margin-block-start: 0.4em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  blockquote,
+  table {
+    break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    /* Ink cost is real; a full-bleed hero should not consume a whole sheet. */
+    max-height: 12cm;
+    object-fit: contain;
+  }
+
+  /* Source notes and corrections must survive to paper — they are the record. */
+  [data-source-notes],
+  [data-correction-note],
+  [data-disclosure],
+  [data-credits] {
+    display: block !important;
+    border-block-start: 1px solid #cccccc;
+    padding-block-start: 0.6em;
+    margin-block-start: 1.2em;
+    font-size: 9.5pt;
+  }
+}

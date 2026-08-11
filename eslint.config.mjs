@@ -1,12 +1,14 @@
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals'
+import nextTypeScript from 'eslint-config-next/typescript'
 
-import { FlatCompat } from '@eslint/eslintrc'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({ baseDirectory: __dirname })
+/**
+ * ESLint 9 flat config.
+ *
+ * `eslint-config-next` 16 ships native flat-config arrays, so they are spread
+ * directly. Routing them through `FlatCompat` — the pattern most Next
+ * scaffolds still use — makes eslintrc re-serialize an already-flat config and
+ * throws on the circular plugin references inside it.
+ */
 
 /** @type {import('eslint').Linter.Config[]} */
 const config = [
@@ -15,6 +17,7 @@ const config = [
       '.next/**',
       'node_modules/**',
       'out/**',
+      'coverage/**',
       'playwright-report/**',
       'test-results/**',
       'payload-types.ts',
@@ -22,11 +25,12 @@ const config = [
     ],
   },
 
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextCoreWebVitals,
+  ...nextTypeScript,
 
   {
     rules: {
-      // The plan forbids untyped escape hatches without justification.
+      // The plan forbids untyped escape hatches without explicit justification.
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
@@ -43,13 +47,14 @@ const config = [
       'jsx-a11y/aria-props': 'error',
       'jsx-a11y/role-has-required-aria-props': 'error',
 
-      // Reader-facing images must go through the governed EditorialImage layer.
+      // Reader-facing images go through the governed EditorialImage layer,
+      // which is what enforces sizes, dimensions, and LCP priority.
       '@next/next/no-img-element': 'error',
     },
   },
 
   {
-    // Migration/seed scripts run in Node and legitimately log progress.
+    // Migration and seed scripts run in Node and legitimately log progress.
     files: ['scripts/**/*.ts', 'tests/**/*.ts'],
     rules: {
       'no-console': 'off',
