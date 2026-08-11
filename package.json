@@ -25,7 +25,7 @@
     "analyze": "ANALYZE=true next build",
     "cms:types": "payload generate:types",
     "cms:importmap": "payload generate:importmap",
-    "cms:migrate": "payload migrate",
+    "cms:migrate": "tsx scripts/cms/fix-migration-imports.ts && payload migrate",
     "cms:migrate:create": "payload migrate:create",
     "cms:migrate:status": "payload migrate:status",
     "cms:seed": "tsx scripts/seed/index.ts",
