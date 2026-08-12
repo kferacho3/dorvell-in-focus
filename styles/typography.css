@@ -257,4 +257,30 @@
     text-decoration: none;
     padding-inline: 0.15em;
   }
+
+  /*
+   * Opts a subtree out of prose styling.
+   *
+   * Named after the Tailwind Typography convention so it reads familiarly, but
+   * implemented here because this project does not use that plugin — a class
+   * that looks like it does something and does nothing is worse than no class.
+   *
+   * Scoped to the cases that actually matter: a structured list inside an
+   * article (social links, credit rows) should not inherit the registration
+   * tick that replaces editorial bullets.
+   */
+  & .not-prose,
+  & .not-prose ul {
+    list-style: none;
+    padding-inline-start: 0;
+  }
+
+  & .not-prose ul > li::before,
+  & .not-prose > li::before {
+    content: none;
+  }
+
+  & .not-prose li + li {
+    margin-block-start: 0;
+  }
 }
