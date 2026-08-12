@@ -12,11 +12,7 @@
  */
 
 export type SocialKey =
-  | 'instagramPhotography'
-  | 'instagramPersonal'
-  | 'tiktok'
-  | 'facebook'
-  | 'linkedin'
+  'instagramPhotography' | 'instagramPersonal' | 'tiktok' | 'facebook' | 'linkedin'
 
 export type SocialDestination = {
   readonly key: SocialKey

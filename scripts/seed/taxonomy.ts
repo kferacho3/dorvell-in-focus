@@ -47,6 +47,31 @@ export const SEED_TAGS: SeedTag[] = [
   { label: 'Journalism', kind: 'subject', channelAffinity: ['stories'] },
   { label: 'Culture', kind: 'subject', channelAffinity: ['stories'] },
 
+  /*
+   * Drawn from the actual category counts on dorvellferguson.com rather than
+   * invented. Portrait (1,074), Music (340), Athletics (218), Landscape (97),
+   * Modeling (81), Headshots (9), Street (5) — a vocabulary that already
+   * describes 1,831 curated frames.
+   *
+   * "Headshots" stays separate from "Portraiture" because they are different
+   * commissions with different buyers, and collapsing them would make the
+   * commercial work unfindable.
+   */
+  { label: 'Landscape', kind: 'subject', channelAffinity: ['photography'] },
+  {
+    label: 'Headshots',
+    kind: 'subject',
+    channelAffinity: ['photography'],
+    aliases: ['headshot'],
+  },
+  { label: 'Street', kind: 'subject', channelAffinity: ['photography'] },
+  {
+    label: 'Concerts',
+    kind: 'subject',
+    channelAffinity: ['photography'],
+    aliases: ['live music', 'gigs'],
+  },
+
   // --- Technique --------------------------------------------------------
   { label: 'Editing', kind: 'technique', channelAffinity: ['motion'] },
   { label: 'Directing', kind: 'technique', channelAffinity: ['motion', 'photography'] },
@@ -70,6 +95,17 @@ export const SEED_TAGS: SeedTag[] = [
   { label: 'Modeling Story', kind: 'format', channelAffinity: ['modeling'] },
   { label: 'Behind the Scenes', kind: 'format', aliases: ['bts'] },
 
+  /* The Creative Worlds "rooms" from the existing site, carried across as
+   * formats so the film catalogue keeps the shape Dorvell already gave it. */
+  { label: 'Cinematic Short', kind: 'format', channelAffinity: ['motion'] },
+  { label: 'Motion Study', kind: 'format', channelAffinity: ['motion'] },
+  { label: 'Editing Study', kind: 'format', channelAffinity: ['motion'] },
+  {
+    label: 'Creative Photoshoot',
+    kind: 'format',
+    channelAffinity: ['photography', 'modeling'],
+  },
+
   // --- Moods ------------------------------------------------------------
   // The first group is from the plan; the rest are the vocabulary Dorvell has
   // actually been using across the existing film catalogue.
@@ -86,6 +122,11 @@ export const SEED_TAGS: SeedTag[] = [
   { label: 'body language', kind: 'mood' },
   { label: 'warm light', kind: 'mood' },
   { label: 'monochrome', kind: 'mood' },
+  { label: 'golden hour', kind: 'mood', aliases: ['sunset'] },
+  { label: 'low light', kind: 'mood' },
+  { label: 'silhouette', kind: 'mood' },
+  { label: 'abandoned', kind: 'mood' },
+  { label: 'gym', kind: 'mood', aliases: ['training'] },
   { label: 'experimental', kind: 'mood' },
   { label: 'suspense', kind: 'mood' },
   { label: 'comedy', kind: 'mood' },

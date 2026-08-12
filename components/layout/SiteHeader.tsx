@@ -64,7 +64,7 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
             />
             <button
               type="submit"
-              className="type-kicker text-channel-muted hover:text-channel-accent min-h-10 border-channel-fg/20 border-l px-3 transition-colors"
+              className="type-kicker text-channel-muted hover:text-channel-accent border-channel-fg/20 min-h-10 border-l px-3 transition-colors"
             >
               Go
             </button>

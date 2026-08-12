@@ -16,22 +16,26 @@ const POLICY_LINKS = [
   {
     href: '/privacy',
     label: 'Privacy',
-    summary: 'What is collected when you read, subscribe, or write in — and what is never collected.',
+    summary:
+      'What is collected when you read, subscribe, or write in — and what is never collected.',
   },
   {
     href: '/terms',
     label: 'Terms & copyright',
-    summary: 'How you may use the photographs, films, and writing published here, and what needs permission.',
+    summary:
+      'How you may use the photographs, films, and writing published here, and what needs permission.',
   },
   {
     href: '/disclosures',
     label: 'Disclosures',
-    summary: 'Sponsored, gifted, commissioned, and affiliate relationships — labeled on the story, before you read.',
+    summary:
+      'Sponsored, gifted, commissioned, and affiliate relationships — labeled on the story, before you read.',
   },
   {
     href: '/accessibility',
     label: 'Accessibility',
-    summary: 'How the site is built to stay readable and navigable, and what is still being finished.',
+    summary:
+      'How the site is built to stay readable and navigable, and what is still being finished.',
   },
 ] as const
 
@@ -81,10 +85,9 @@ export default function PoliciesPage() {
         control of what is written and shown stays with Dorvell, including on paid work.
       </p>
       <p>
-        For partnership enquiries, use the{' '}
-        <Link href="/contact">contact page</Link> and say you are writing about a
-        collaboration. The full label set and wording live on the{' '}
-        <Link href="/disclosures">disclosures</Link> page.
+        For partnership enquiries, use the <Link href="/contact">contact page</Link> and
+        say you are writing about a collaboration. The full label set and wording live on
+        the <Link href="/disclosures">disclosures</Link> page.
       </p>
 
       <h2>Ads, gifts, and affiliate links</h2>
@@ -118,15 +121,15 @@ export default function PoliciesPage() {
         This publication does not run an open comment board. Enquiries, corrections,
         casting, press, and collaboration notes go through the{' '}
         <Link href="/contact">contact page</Link>. Messages that are abusive, harassing,
-        or sent in bad faith may be ignored or deleted without reply. The goal is a
-        direct line for real work and real corrections — not a free-for-all.
+        or sent in bad faith may be ignored or deleted without reply. The goal is a direct
+        line for real work and real corrections — not a free-for-all.
       </p>
 
       <h2>Still have questions?</h2>
       <p>
-        Write anytime via the <Link href="/contact">contact page</Link> if something
-        about these policies is unclear. As the publication grows, the policies will
-        grow with it — dated at the top of each page when they do.
+        Write anytime via the <Link href="/contact">contact page</Link> if something about
+        these policies is unclear. As the publication grows, the policies will grow with
+        it — dated at the top of each page when they do.
       </p>
     </StaticPage>
   )

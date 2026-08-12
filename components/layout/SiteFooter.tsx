@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Wordmark } from '@/components/layout/FocusMark'
+import { SocialIcon } from '@/components/media/SocialIcon'
 import { getChannels } from '@/lib/cms/channel-settings'
 import { PORTFOLIO_URL, SOCIAL_DESTINATIONS } from '@/lib/social'
 
@@ -92,8 +93,9 @@ export async function SiteFooter() {
                     href={social.href}
                     rel="me noopener noreferrer"
                     target="_blank"
-                    className="type-kicker hover:opacity-60"
+                    className="type-kicker inline-flex items-center gap-2.5 hover:opacity-60"
                   >
+                    <SocialIcon name={social.key} className="text-channel-muted" />
                     {social.handle}
                     {/* The platform is part of the accessible name — two
                         Instagram accounts would otherwise be ambiguous. */}
