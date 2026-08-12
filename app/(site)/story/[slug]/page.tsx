@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { BlockRenderer } from '@/components/blocks/BlockRenderer'
 import { StoryCard } from '@/components/editorial/StoryCard'
 import { StoryMeta } from '@/components/editorial/StoryMeta'
+import { StoryTags } from '@/components/editorial/StoryTags'
 import { PublicationShell } from '@/components/layout/PublicationShell'
 import { EditorialImage } from '@/components/media/EditorialImage'
 import { JsonLd } from '@/components/seo/JsonLd'
@@ -137,6 +138,12 @@ export default async function StoryPage({ params }: StoryPageProps) {
         )}
 
         <BlockRenderer blocks={story.contentBlocks} />
+
+        <div className="shell">
+          <div className="measure mx-auto">
+            <StoryTags tags={story.tags} />
+          </div>
+        </div>
       </article>
 
       {related.length > 0 && (

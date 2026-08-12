@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { PublicationShell } from '@/components/layout/PublicationShell'
 import { storyTypeLabel, formatDate } from '@/components/editorial/StoryMeta'
 import { CHANNEL_LIST, isChannelKey } from '@/lib/channels'
+import { getActiveTagsWithCounts } from '@/lib/cms/entities'
 import { getSearchProvider, parseExcerpt } from '@/lib/search'
 import { cn } from '@/lib/utils/cn'
 
@@ -37,7 +38,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const channel = isChannelKey(params.channel) ? params.channel : undefined
   const page = Math.max(1, Number.parseInt(params.page ?? '1', 10) || 1)
 
-  const result = q ? await getSearchProvider().search({ q, channel, page }) : null
+  const [result, tagEntries] = await Promise.all([
+    q ? getSearchProvider().search({ q, channel, page }) : Promise.resolve(null),
+    q ? Promise.resolve([]) : getActiveTagsWithCounts(),
+  ])
+
+  const browseTags = tagEntries.slice(0, 24)
 
   const hrefFor = (next: { channel?: string; page?: number }): string => {
     const query = new URLSearchParams()
@@ -52,6 +58,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     <PublicationShell channel="publication">
       <section className="shell border-channel-rule border-b py-14 lg:py-20">
         <h1 className="type-h1">Search</h1>
+        <p className="type-lead text-channel-muted measure mt-4">
+          Find stories, films, people, and places — or browse by{' '}
+          <Link href="/tags" className="underline underline-offset-4">
+            tag
+          </Link>{' '}
+          when you know the subject.
+        </p>
 
         {/* A plain GET form. Works before hydration and after a failed chunk. */}
         <form action="/search" method="get" role="search" className="measure mt-8">
@@ -78,6 +91,51 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </div>
         </form>
       </section>
+
+      {!q && (
+        <section className="shell py-12" aria-labelledby="browse-tags">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <h2 id="browse-tags" className="type-meta text-channel-muted">
+                Browse by tag
+              </h2>
+              <p className="type-caption text-channel-muted mt-2 max-w-[48ch]">
+                Start from the vocabulary behind the work, or open the full{' '}
+                <Link href="/tags" className="underline underline-offset-4">
+                  tags index
+                </Link>
+                .
+              </p>
+            </div>
+            <Link href="/archive" className="type-kicker opacity-70 hover:opacity-100">
+              Full archive →
+            </Link>
+          </div>
+
+          {browseTags.length === 0 ? (
+            <p className="type-body text-channel-muted mt-8">
+              No tagged stories yet. Try a name, a place, or a channel once Issue 001 is
+              live.
+            </p>
+          ) : (
+            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-3">
+              {browseTags.map(({ tag, storyCount }) => (
+                <li key={tag.id}>
+                  <Link
+                    href={`/tags/${tag.slug}`}
+                    className="type-kicker text-channel-fg/85 hover:text-channel-accent inline-flex items-baseline gap-2 transition-colors"
+                  >
+                    <span className="border-channel-fg/20 hover:border-channel-accent border-b pb-0.5">
+                      {tag.label}
+                    </span>
+                    <span className="type-meta text-channel-muted">{storyCount}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
 
       {q && result && (
         <>
@@ -131,6 +189,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 <p className="type-body text-channel-muted">
                   Nothing matched. Try a single distinctive word, a place, or a
                   person&apos;s name — or browse{' '}
+                  <Link href="/tags" className="underline underline-offset-4">
+                    tags
+                  </Link>{' '}
+                  and{' '}
                   <Link href="/archive" className="underline underline-offset-4">
                     the archive
                   </Link>

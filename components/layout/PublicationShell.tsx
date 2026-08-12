@@ -1,5 +1,6 @@
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader } from '@/components/layout/SiteHeader'
+import { SocialRail } from '@/components/layout/SocialRail'
 import { RouteAnnouncer } from '@/components/layout/RouteAnnouncer'
 import { SharedStoryFrame } from '@/components/motion/SharedStoryFrame'
 
@@ -37,6 +38,7 @@ export function PublicationShell({ channel, children }: PublicationShellProps) {
       </a>
 
       <SiteHeader channel={channel} />
+      <SocialRail />
 
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         {children}

@@ -27,7 +27,8 @@ export default function AccessibilityPage() {
     >
       <p>
         The target is WCAG 2.2 Level AA. That is a target being worked toward, not a
-        certification being claimed.
+        certification being claimed. This statement is part of the{' '}
+        <a href="/policies">policies</a> set.
       </p>
 
       <h2>What is in place</h2>

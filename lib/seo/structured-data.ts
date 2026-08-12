@@ -40,8 +40,9 @@ export function personSchema(): JsonLd {
     sameAs: [
       'https://www.dorvellferguson.com/',
       'https://www.instagram.com/fergphotography/',
-      'https://www.instagram.com/2kferg/',
+      'https://www.instagram.com/dorvellfergusonjr/',
       'https://www.tiktok.com/@2kferg',
+      'https://www.facebook.com/DJ.ferguson2',
       'https://www.linkedin.com/in/dorvell-ferguson-jr-bsa-a78a02194/',
     ],
   }

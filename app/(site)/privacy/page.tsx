@@ -30,7 +30,12 @@ export default function PrivacyPage() {
     >
       <p>
         FERG IN FOCUS is a small independent publication. It collects as little as it can
-        and keeps it for as short a time as is useful.
+        and keeps it for as short a time as is useful. Contact information is never sold,
+        rented, or traded.
+      </p>
+      <p>
+        This page is part of the wider <a href="/policies">policies</a> set. If something
+        here is unclear, write via the <a href="/contact">contact page</a>.
       </p>
 
       <h2>What is collected</h2>
@@ -45,12 +50,22 @@ export default function PrivacyPage() {
       </p>
       <p>
         <strong>Your email address</strong>, if you subscribe to the newsletter. It is
-        used to send the newsletter and nothing else. It is never sold, rented, or shared.
+        used to send the newsletter and nothing else. It is never sold, rented, or shared
+        with advertisers.
       </p>
       <p>
         <strong>What you write in a contact form</strong>, if you send one — your name,
-        your address, and your message, so a reply is possible.
+        your address, and your message, so a reply is possible. Messages are treated as
+        private correspondence, not as public content.
       </p>
+
+      <h2>What is not collected</h2>
+      <ul>
+        <li>No account system and no login for readers.</li>
+        <li>No advertising cookies and no cross-site tracking pixels.</li>
+        <li>No sale of mailing lists or enquiry details to third parties.</li>
+        <li>No recording of text you select on a page, or of form field keystrokes.</li>
+      </ul>
 
       <h2>Analytics</h2>
       <p>
@@ -73,20 +88,30 @@ export default function PrivacyPage() {
       <p>
         Photographs and films are served from this publication&apos;s own content delivery
         network. Where a film is delivered by a video provider, that provider necessarily
-        receives the request needed to stream it.
+        receives the request needed to stream it. That request is for delivery, not for
+        building an advertising profile here.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        This publication is not directed at children under 13, and it does not knowingly
+        collect personal information from them. If you believe a child has submitted
+        information here, contact us and it will be deleted.
       </p>
 
       <h2>Your choices</h2>
       <p>
         You can unsubscribe from any email, ask what is held about you, and ask for it to
         be deleted. Write via the <a href="/contact">contact page</a> and it will be
-        handled.
+        handled. You can also clear local storage in your browser to remove the motion
+        preference at any time.
       </p>
 
       <h2>Changes</h2>
       <p>
         If this notice changes in a way that affects you, the date above changes and the
-        change is described here rather than applied silently.
+        change is described here rather than applied silently. Older versions are not
+        rewritten to look like they always said the new thing.
       </p>
     </StaticPage>
   )

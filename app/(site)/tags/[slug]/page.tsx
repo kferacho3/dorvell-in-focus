@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { EntityLanding } from '@/components/editorial/EntityLanding'
@@ -37,9 +38,21 @@ export default async function TagPage({ params }: TagPageProps) {
 
   if (!result) notFound()
 
+  const kind = KIND_LABELS[result.entity.kind ?? 'subject'] ?? 'Tag'
+
   return (
     <EntityLanding
-      kicker={KIND_LABELS[result.entity.kind ?? 'subject'] ?? 'Tag'}
+      kicker={
+        <>
+          <Link href="/tags" className="hover:opacity-70">
+            Tags
+          </Link>
+          <span aria-hidden className="mx-2 opacity-40">
+            /
+          </span>
+          {kind}
+        </>
+      }
       name={result.entity.label}
       description={result.entity.description}
       stories={result.stories}

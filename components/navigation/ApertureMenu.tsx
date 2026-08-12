@@ -37,9 +37,11 @@ type ApertureMenuProps = {
 
 const SECONDARY_LINKS = [
   { href: '/search', label: 'Search' },
+  { href: '/tags', label: 'Tags' },
   { href: '/archive', label: 'Archive' },
   { href: '/newsletter', label: 'Newsletter' },
   { href: '/about', label: 'About' },
+  { href: '/policies', label: 'Policies' },
 ] as const
 
 const FOCUSABLE =

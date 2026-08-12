@@ -26,8 +26,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     })),
     { url: `${siteUrl}/archive`, changeFrequency: 'weekly', priority: 0.5 },
+    { url: `${siteUrl}/tags`, changeFrequency: 'weekly', priority: 0.5 },
     { url: `${siteUrl}/about`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${siteUrl}/newsletter`, changeFrequency: 'monthly', priority: 0.4 },
+    { url: `${siteUrl}/policies`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${siteUrl}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${siteUrl}/terms`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${siteUrl}/accessibility`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${siteUrl}/disclosures`, changeFrequency: 'yearly', priority: 0.3 },
   ]
 
   try {

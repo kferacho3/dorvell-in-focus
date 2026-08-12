@@ -60,11 +60,11 @@ export default function NewsletterPage() {
           </a>{' '}
           and{' '}
           <a
-            href="https://www.instagram.com/2kferg/"
+            href="https://www.instagram.com/dorvellfergusonjr/"
             rel="noopener noreferrer"
             target="_blank"
           >
-            @2kferg
+            @dorvellfergusonjr
           </a>
           .
         </p>

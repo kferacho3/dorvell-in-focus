@@ -5,6 +5,7 @@ import { getChannels } from '@/lib/cms/channel-settings'
 import { PORTFOLIO_URL, SOCIAL_DESTINATIONS } from '@/lib/social'
 
 const LEGAL_LINKS = [
+  { href: '/policies', label: 'Policies' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
   { href: '/accessibility', label: 'Accessibility' },
@@ -14,6 +15,7 @@ const LEGAL_LINKS = [
 const READ_LINKS = [
   { href: '/archive', label: 'Archive' },
   { href: '/search', label: 'Search' },
+  { href: '/tags', label: 'Tags' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
   { href: '/feed.xml', label: 'RSS' },

@@ -45,11 +45,36 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
         <ChannelNav channels={channels} current={channel} className="hidden lg:block" />
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/search"
-            className="type-kicker hidden opacity-70 hover:opacity-100 sm:inline"
+          <form
+            action="/search"
+            method="get"
+            role="search"
+            className="border-channel-fg/20 focus-within:border-channel-accent hidden items-center border sm:flex"
           >
-            Search
+            <label htmlFor="header-q" className="sr-only-live">
+              Search the publication
+            </label>
+            <input
+              id="header-q"
+              name="q"
+              type="search"
+              autoComplete="off"
+              placeholder="Search…"
+              className="type-kicker text-channel-fg placeholder:text-channel-muted min-h-10 w-36 bg-transparent px-3 py-2 outline-none lg:w-48"
+            />
+            <button
+              type="submit"
+              className="type-kicker text-channel-muted hover:text-channel-accent min-h-10 border-channel-fg/20 border-l px-3 transition-colors"
+            >
+              Go
+            </button>
+          </form>
+
+          <Link
+            href="/tags"
+            className="type-kicker hidden opacity-70 hover:opacity-100 md:inline"
+          >
+            Tags
           </Link>
 
           <Link

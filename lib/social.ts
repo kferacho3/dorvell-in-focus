@@ -6,12 +6,17 @@
  * links somewhere wrong is worse than one with fewer icons.
  *
  * Two Instagram accounts is a fact about how Dorvell works, not an oversight:
- * `@fergphotography` is the commissioned photography practice and `@2kferg` is
- * the personal creative world. Collapsing them would misrepresent both.
+ * `@fergphotography` is the commissioned photography practice and
+ * `@dorvellfergusonjr` is the personal creative world. Collapsing them would
+ * misrepresent both.
  */
 
 export type SocialKey =
-  'instagramPhotography' | 'instagramPersonal' | 'tiktok' | 'facebook' | 'linkedin'
+  | 'instagramPhotography'
+  | 'instagramPersonal'
+  | 'tiktok'
+  | 'facebook'
+  | 'linkedin'
 
 export type SocialDestination = {
   readonly key: SocialKey
@@ -21,6 +26,8 @@ export type SocialDestination = {
   readonly href: string
   /** Accessible name for the link. */
   readonly label: string
+  /** Compact label for the fixed rail. Distinct when two accounts share a platform. */
+  readonly railLabel: string
   /** Whether this belongs in the compact rail beside stories. */
   readonly inRail: boolean
 }
@@ -32,14 +39,16 @@ export const SOCIAL_DESTINATIONS: readonly SocialDestination[] = [
     handle: '@fergphotography',
     href: 'https://www.instagram.com/fergphotography/',
     label: 'FERG Photography on Instagram',
+    railLabel: 'Photo',
     inRail: true,
   },
   {
     key: 'instagramPersonal',
     platform: 'Instagram',
-    handle: '@2kferg',
-    href: 'https://www.instagram.com/2kferg/',
+    handle: '@dorvellfergusonjr',
+    href: 'https://www.instagram.com/dorvellfergusonjr/',
     label: 'Dorvell Ferguson on Instagram',
+    railLabel: 'Dorvell',
     inRail: true,
   },
   {
@@ -48,6 +57,7 @@ export const SOCIAL_DESTINATIONS: readonly SocialDestination[] = [
     handle: '@2kferg',
     href: 'https://www.tiktok.com/@2kferg',
     label: 'Dorvell Ferguson on TikTok',
+    railLabel: 'TikTok',
     inRail: true,
   },
   {
@@ -56,6 +66,7 @@ export const SOCIAL_DESTINATIONS: readonly SocialDestination[] = [
     handle: 'Dorvell Ferguson',
     href: 'https://www.facebook.com/DJ.ferguson2',
     label: 'Dorvell Ferguson on Facebook',
+    railLabel: 'Facebook',
     inRail: true,
   },
   {
@@ -64,9 +75,8 @@ export const SOCIAL_DESTINATIONS: readonly SocialDestination[] = [
     handle: 'Dorvell Ferguson Jr.',
     href: 'https://www.linkedin.com/in/dorvell-ferguson-jr-bsa-a78a02194/',
     label: 'Dorvell Ferguson Jr. on LinkedIn',
-    // Professional context belongs in the footer and About page, not beside a
-    // photo essay.
-    inRail: false,
+    railLabel: 'LinkedIn',
+    inRail: true,
   },
 ] as const
 

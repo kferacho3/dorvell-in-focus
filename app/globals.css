@@ -24,11 +24,21 @@
   html {
     /* The shell reserves this; sticky headers and :target offsets read it. */
     --header-height: 4.5rem;
+    --social-rail-width: 0px;
+    scroll-padding-top: var(--header-height);
   }
 
   @media (width >= 64rem) {
     html {
       --header-height: 5.5rem;
+    }
+  }
+
+  /* Reserve the fixed rail so focus rings and anchors are never clipped (I-03). */
+  @media (width >= 80rem) {
+    html {
+      --social-rail-width: 5.25rem;
+      scroll-padding-inline-end: var(--social-rail-width);
     }
   }
 

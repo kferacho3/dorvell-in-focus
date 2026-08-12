@@ -18,6 +18,15 @@ export type EntityResult<T> = {
   total: number
 } | null
 
+export type TagIndexEntry = {
+  tag: Tag
+  storyCount: number
+}
+
+export type TagKind = Tag['kind']
+
+const TAG_KIND_ORDER: readonly TagKind[] = ['subject', 'format', 'technique', 'mood']
+
 async function findStoriesFor(
   relation: 'tags' | 'people' | 'places',
   id: string | number,
@@ -35,6 +44,59 @@ async function findStoriesFor(
     sort: '-publishedAt',
   })
   return { docs: result.docs, total: result.totalDocs }
+}
+
+/**
+ * Active tags with at least one published story, grouped for the /tags index
+ * and search empty state. Counts are capped lookups — cheap enough for a
+ * curated vocabulary, not for an unbounded free-tag system.
+ */
+export async function getActiveTagsWithCounts(): Promise<TagIndexEntry[]> {
+  try {
+    const payload = await getCms()
+    const found = await payload.find({
+      collection: 'tags',
+      where: { status: { equals: 'active' } },
+      limit: 200,
+      depth: 0,
+      sort: 'label',
+    })
+
+    const withCounts = await Promise.all(
+      found.docs.map(async (tag) => {
+        const stories = await findStoriesFor('tags', tag.id, 1)
+        return { tag, storyCount: stories.total }
+      }),
+    )
+
+    return withCounts
+      .filter((entry) => entry.storyCount > 0)
+      .sort((a, b) => {
+        const kindDelta =
+          TAG_KIND_ORDER.indexOf(a.tag.kind) - TAG_KIND_ORDER.indexOf(b.tag.kind)
+        if (kindDelta !== 0) return kindDelta
+        return a.tag.label.localeCompare(b.tag.label)
+      })
+  } catch {
+    return []
+  }
+}
+
+export function groupTagsByKind(
+  entries: readonly TagIndexEntry[],
+): { kind: TagKind; label: string; entries: TagIndexEntry[] }[] {
+  const labels: Record<TagKind, string> = {
+    subject: 'Subject',
+    format: 'Format',
+    technique: 'Technique',
+    mood: 'Mood',
+  }
+
+  return TAG_KIND_ORDER.map((kind) => ({
+    kind,
+    label: labels[kind],
+    entries: entries.filter((entry) => entry.tag.kind === kind),
+  })).filter((group) => group.entries.length > 0)
 }
 
 export async function getTagBySlug(slug: string, limit = 24): Promise<EntityResult<Tag>> {

@@ -166,7 +166,10 @@ async function seedAuthor(payload: Payload): Promise<string | number> {
           label: 'Instagram — FERG Photography',
           url: 'https://www.instagram.com/fergphotography/',
         },
-        { label: 'Instagram — @2kferg', url: 'https://www.instagram.com/2kferg/' },
+        {
+          label: 'Instagram — @dorvellfergusonjr',
+          url: 'https://www.instagram.com/dorvellfergusonjr/',
+        },
       ],
     },
   )

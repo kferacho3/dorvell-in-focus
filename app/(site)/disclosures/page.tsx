@@ -65,6 +65,11 @@ export default async function DisclosuresPage() {
         disclosure appears at the top of the story — not at the bottom, where a reader who
         has already finished has not actually been told anything.
       </p>
+      <p>
+        Partnership and sponsorship enquiries go through the{' '}
+        <a href="/contact">contact page</a>. The wider policy set lives at{' '}
+        <a href="/policies">policies</a>.
+      </p>
 
       <h2>The labels used</h2>
       <p>
@@ -114,6 +119,13 @@ export default async function DisclosuresPage() {
       <p>
         Articles by other publications are linked and credited to their author and outlet.
         Their reporting is not reproduced here and presented as original work.
+      </p>
+
+      <h2>Opinions</h2>
+      <p>
+        Unless a disclosure says otherwise, judgments in a story are Dorvell&apos;s. A
+        gift, fee, or affiliate relationship does not buy a rewrite of that judgment, and
+        it does not convert a personal view into a partner&apos;s press release.
       </p>
     </StaticPage>
   )

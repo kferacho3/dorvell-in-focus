@@ -1,11 +1,12 @@
 import { StoryCard } from '@/components/editorial/StoryCard'
 import { PublicationShell } from '@/components/layout/PublicationShell'
 
+import type { ReactNode } from 'react'
 import type { Story } from '@/payload-types'
 
 type EntityLandingProps = {
   /** Small label above the name — "Tag", "Person", "Place". */
-  kicker: string
+  kicker: ReactNode
   name: string
   description?: string | null
   /** Extra metadata line, e.g. a person's role or a place's locality. */
