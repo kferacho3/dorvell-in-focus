@@ -1,5 +1,6 @@
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader } from '@/components/layout/SiteHeader'
+import { RouteAnnouncer } from '@/components/layout/RouteAnnouncer'
 import { SharedStoryFrame } from '@/components/motion/SharedStoryFrame'
 
 import type { ThemeKey } from '@/lib/channels'
@@ -48,6 +49,10 @@ export function PublicationShell({ channel, children }: PublicationShellProps) {
        * links that already work, so navigation is never waiting on it.
        */}
       <SharedStoryFrame />
+
+      {/* Client navigation fires no page-load event, so a screen reader would
+          otherwise hear nothing when a link is followed. */}
+      <RouteAnnouncer />
     </div>
   )
 }

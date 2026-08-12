@@ -123,7 +123,7 @@
   --channel-bg: #f1f1ed;
   --channel-fg: #10110f;
   --channel-muted: #565853;
-  --channel-accent: #2457ff;
+  --channel-accent: #2252f0;
   --channel-rule: #d5d6d0;
   --channel-key: 'photography';
 }
@@ -153,7 +153,7 @@
   --channel-bg: #eee9e3;
   --channel-fg: #10100f;
   --channel-muted: #55524e;
-  --channel-accent: #7657ff;
+  --channel-accent: #644ad9;
   --channel-rule: #d8d2ca;
   --channel-key: 'modeling';
 }
@@ -168,7 +168,7 @@
   --channel-bg: #efefe9;
   --channel-fg: #10110f;
   --channel-muted: #55574f;
-  --channel-accent: var(--partner-accent, #0a756d);
+  --channel-accent: var(--partner-accent, #0a7069);
   --channel-rule: #d7d8d0;
   --channel-key: 'x';
 }
@@ -185,19 +185,24 @@
  * without pretending to be inside it.
  */
 [data-accent='photography'] {
-  --channel-accent: #2457ff;
+  --channel-accent: #2252f0;
 }
 [data-accent='motion'] {
-  --channel-accent: #ff6638;
+  /*
+   * Not #ff6638. The Screening Room's ember is tuned for near-black, where it
+   * reaches 6.7:1 — on paper it collapses to 2.6:1 and fails AA outright. A
+   * card pointing at 4KFERG from a light page needs the deepened ember.
+   */
+  --channel-accent: #a84325;
 }
 [data-accent='stories'] {
   --channel-accent: #7e2431;
 }
 [data-accent='modeling'] {
-  --channel-accent: #7657ff;
+  --channel-accent: #644ad9;
 }
 [data-accent='x'] {
-  --channel-accent: var(--partner-accent, #0a756d);
+  --channel-accent: var(--partner-accent, #0a7069);
 }
 
 /* -------------------------------------------------------------- layout -- */
