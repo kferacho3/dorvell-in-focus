@@ -1,6 +1,9 @@
+import Link from 'next/link'
+
 import { RichText } from '@payloadcms/richtext-lexical/react'
 
 import { EditorialImage } from '@/components/media/EditorialImage'
+import { VideoPlayer } from '@/components/media/VideoPlayer'
 import { formatDuration } from '@/lib/media/resolve'
 import { cn } from '@/lib/utils/cn'
 
@@ -31,7 +34,14 @@ export function BlockRenderer({ blocks }: { blocks: Story['contentBlocks'] }) {
   )
 }
 
-/** Wraps a block in the reading measure unless it deliberately breaks out. */
+/**
+ * Wraps a block in the reading measure unless it deliberately breaks out.
+ *
+ * Left-aligned to the shell margin rather than centred, because the story
+ * header sets its headline, dek, and metadata there. A centred body column
+ * under a left-aligned headline reads as two documents stacked on top of each
+ * other — the eye loses the left edge it was tracking.
+ */
 function Measured({
   children,
   className,
@@ -41,7 +51,7 @@ function Measured({
 }) {
   return (
     <div className={cn('shell', className)}>
-      <div className="measure mx-auto">{children}</div>
+      <div className="measure">{children}</div>
     </div>
   )
 }
@@ -56,7 +66,6 @@ function Block({ block, index }: { block: StoryBlock; index: number }) {
             className={cn(
               'prose-editorial',
               block.width === 'wide' ? 'max-w-4xl' : 'measure',
-              'mx-auto',
             )}
           >
             <RichText data={block.content} />
@@ -326,13 +335,83 @@ function Block({ block, index }: { block: StoryBlock; index: number }) {
       )
 
     // ---------------------------------------------------------- motion --
-    case 'video':
+    case 'video': {
+      const presentation = block.presentation ?? 'contained'
+      return (
+        <div
+          className={cn(
+            'my-14',
+            presentation === 'fullBleed' ? 'bleed' : 'shell',
+            presentation === 'contained' && 'mx-auto',
+          )}
+        >
+          <VideoPlayer
+            media={block.media}
+            caption={block.caption}
+            loop={block.autoplayLoop === true}
+            className={presentation === 'contained' ? 'measure mx-auto' : undefined}
+          />
+        </div>
+      )
+    }
+
     case 'verticalVideoPair':
+      return (
+        <div className="shell my-14">
+          {/*
+           * Two 9:16 films side by side at their true ratio. No phone mockup —
+           * the plan is explicit that a device frame is not part of the story
+           * (§3.6), and drawing a bezel around a frame stops it being the work.
+           */}
+          <div
+            className={cn(
+              'mx-auto grid gap-(--shell-gutter)',
+              block.right ? 'max-w-4xl sm:grid-cols-2' : 'max-w-md',
+            )}
+          >
+            <VideoPlayer media={block.left} />
+            {block.right && <VideoPlayer media={block.right} />}
+          </div>
+          {block.caption && (
+            <p className="type-caption measure mx-auto mt-4">{block.caption}</p>
+          )}
+        </div>
+      )
+
     case 'posterSequence':
-      // The accessible player lands in PR10 with the 4KFERG channel. Until
-      // then a block placed in a draft renders nothing rather than a broken
-      // element — no published story uses these yet.
-      return null
+      return (
+        <section className="shell my-16">
+          <ol className="editorial-grid">
+            {(block.posters ?? []).map((poster, i) => {
+              const story = typeof poster.story === 'object' ? poster.story : null
+              return (
+                <li
+                  key={poster.id ?? i}
+                  className="col-span-4 md:col-span-4 lg:col-span-4"
+                >
+                  {story?.slug ? (
+                    <Link href={`/story/${story.slug}`} className="group block">
+                      <div className="crop-marks">
+                        <EditorialImage media={poster.media} sizes="card" />
+                      </div>
+                      <p className="type-kicker mt-3 underline-offset-4 group-hover:underline">
+                        {poster.label ?? story.title}
+                      </p>
+                    </Link>
+                  ) : (
+                    <>
+                      <div className="crop-marks">
+                        <EditorialImage media={poster.media} sizes="card" />
+                      </div>
+                      {poster.label && <p className="type-kicker mt-3">{poster.label}</p>}
+                    </>
+                  )}
+                </li>
+              )
+            })}
+          </ol>
+        </section>
+      )
 
     case 'chapterList':
       return (

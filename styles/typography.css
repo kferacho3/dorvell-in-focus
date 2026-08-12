@@ -29,8 +29,8 @@
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--color-channel-bg);
-    color: var(--color-channel-fg);
+    background-color: var(--channel-bg);
+    color: var(--channel-fg);
   }
 
   /*
@@ -122,7 +122,7 @@
   font-family: var(--font-sans);
   font-size: clamp(0.78rem, 0.85vw, 0.9rem);
   line-height: 1.45;
-  color: var(--color-channel-muted);
+  color: var(--channel-muted);
 }
 
 @utility type-meta {
@@ -145,7 +145,7 @@
   font-family: var(--font-sans);
   font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
   line-height: 1.68;
-  color: var(--color-channel-fg);
+  color: var(--channel-fg);
 
   & > * + * {
     margin-block-start: 1.4em;
@@ -156,22 +156,25 @@
     font-size: clamp(1.75rem, 2.6vw, 2.6rem);
     line-height: 1.08;
     letter-spacing: -0.018em;
-    margin-block-start: 2.2em;
-    margin-block-end: -0.4em;
+    margin-block-start: 2.4em;
+    /* Pulls the heading toward the paragraph it introduces, counteracting the
+       sibling rule above. At display-serif sizes -0.4em overshot and the
+       descenders collided with the first line. */
+    margin-block-end: -0.15em;
   }
 
   & h3 {
     font-family: var(--font-display);
     font-size: clamp(1.3rem, 1.7vw, 1.7rem);
     line-height: 1.16;
-    margin-block-start: 1.9em;
-    margin-block-end: -0.5em;
+    margin-block-start: 2em;
+    margin-block-end: -0.25em;
   }
 
   & a {
     color: inherit;
     text-decoration: underline;
-    text-decoration-color: var(--color-channel-accent);
+    text-decoration-color: var(--channel-accent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
     transition: text-decoration-thickness 120ms var(--ease-standard);
@@ -210,7 +213,7 @@
     inset-block-start: 0.72em;
     width: 0.45em;
     height: 1px;
-    background-color: var(--color-channel-accent);
+    background-color: var(--channel-accent);
   }
 
   & ol {
@@ -220,7 +223,7 @@
   & ol > li::marker {
     font-family: var(--font-mono);
     font-size: 0.85em;
-    color: var(--color-channel-muted);
+    color: var(--channel-muted);
   }
 
   & blockquote {
@@ -229,7 +232,7 @@
     line-height: 1.24;
     letter-spacing: -0.014em;
     padding-inline-start: 1em;
-    border-inline-start: 1px solid var(--color-channel-accent);
+    border-inline-start: 1px solid var(--channel-accent);
     margin-block: 2em;
   }
 
@@ -237,13 +240,13 @@
     font-family: var(--font-mono);
     font-size: 0.88em;
     padding: 0.15em 0.35em;
-    background-color: --alpha(var(--color-channel-fg) / 6%);
+    background-color: --alpha(var(--channel-fg) / 6%);
     border-radius: var(--radius-hair);
   }
 
   & hr {
     border: 0;
-    border-block-start: 1px solid var(--color-channel-rule);
+    border-block-start: 1px solid var(--channel-rule);
     margin-block: 3em;
   }
 

@@ -82,6 +82,23 @@
  * foreground, and accent move. That is what lets a reader feel they entered
  * 4KFERG's screening room while never wondering whether they left the
  * publication.
+ *
+ * ── Two variable names, and using the wrong one is a silent bug ──
+ *
+ * `--channel-*` is the runtime value. It is what the `[data-channel]` blocks
+ * below actually set, and it resolves against the element using it.
+ *
+ * `--color-channel-*` is the *Tailwind theme name*. Because of `inline`,
+ * Tailwind substitutes the reference straight into its utilities — so
+ * `text-channel-fg` compiles to `color: var(--channel-fg)` and behaves
+ * correctly. But the mapping is also emitted once as a literal declaration on
+ * `:root`, where `var(--channel-fg)` resolves to the *publication* ink and then
+ * inherits everywhere. Any hand-written rule referencing `--color-channel-fg`
+ * therefore gets dark ink on every channel, including the near-black Screening
+ * Room — which is exactly how the article body once rendered black-on-black.
+ *
+ * So: **hand-written CSS in styles/ must use `--channel-*`.** Reach for
+ * `--color-channel-*` only through a Tailwind utility class.
  */
 @theme inline {
   --color-channel-bg: var(--channel-bg);
@@ -241,7 +258,7 @@
     position: absolute;
     width: 0.75rem;
     height: 0.75rem;
-    border: 1px solid var(--color-channel-accent);
+    border: 1px solid var(--channel-accent);
     pointer-events: none;
   }
 
