@@ -135,6 +135,42 @@ export const SEED_CHANNELS = [
 ] as const
 
 /**
+ * Known partner relationships.
+ *
+ * Confirmed by Dorvell: both brands send product, which he models and features.
+ * No payment, no contract, nothing promised in return — which is precisely the
+ * `gifted` relationship type, not `sponsor` and not `paid-partnership`. Calling
+ * it a sponsorship would overstate it, and overstating a brand relationship is
+ * the kind of error that costs more than it gains.
+ *
+ * `gifted` still requires a visible disclosure. That is FTC guidance on
+ * receiving free product in exchange for coverage, not a house rule — so the
+ * publish validation will hold these to it, and the standard wording is in
+ * SEED_DISCLOSURES below.
+ */
+export const SEED_PARTNERS = [
+  {
+    name: 'PacSun',
+    slug: 'pacsun',
+    kind: 'brand',
+    relationshipType: 'gifted',
+    verificationStatus: 'verified',
+    website: 'https://www.pacsun.com/',
+    summary:
+      'Sends product that Dorvell models and features. No payment and no contract.',
+  },
+  {
+    name: 'Cold Culture',
+    slug: 'cold-culture',
+    kind: 'brand',
+    relationshipType: 'gifted',
+    verificationStatus: 'verified',
+    summary:
+      'Sends product that Dorvell models and features. No payment and no contract.',
+  },
+] as const
+
+/**
  * Standard disclosure wording (plan §8.7).
  *
  * Centralised so every sponsored, gifted, or affiliate story discloses in the

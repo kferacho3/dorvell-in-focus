@@ -32,7 +32,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 import { doc, heading } from './lexical'
-import { SEED_CHANNELS, SEED_DISCLOSURES, SEED_TAGS } from './taxonomy'
+import { SEED_CHANNELS, SEED_DISCLOSURES, SEED_PARTNERS, SEED_TAGS } from './taxonomy'
 
 import type { Payload } from 'payload'
 
@@ -57,7 +57,8 @@ const log = (message: string) => console.log(`  ${message}`)
 /** Finds by a unique field, creating only when absent. Never overwrites. */
 async function upsert<T extends Record<string, unknown>>(
   payload: Payload,
-  collection: 'tags' | 'places' | 'authors' | 'issues' | 'stories' | 'people',
+  collection:
+    'tags' | 'places' | 'authors' | 'issues' | 'stories' | 'people' | 'partners',
   key: { field: string; value: string | number },
   data: T,
 ): Promise<{ id: string | number; created: boolean }> {
@@ -217,6 +218,25 @@ async function seedGlobals(payload: Payload): Promise<void> {
   log('globals: site, channels, disclosures, newsletter')
 }
 
+async function seedPartners(payload: Payload): Promise<void> {
+  let created = 0
+
+  for (const partner of SEED_PARTNERS) {
+    const result = await upsert(
+      payload,
+      'partners',
+      { field: 'slug', value: partner.slug },
+      { ...partner },
+    )
+    if (result.created) created += 1
+  }
+
+  log(
+    `partners: ${created} created, ${SEED_PARTNERS.length - created} already present ` +
+      `(all "gifted" — disclosure required at publish)`,
+  )
+}
+
 async function seedIssue(payload: Payload): Promise<string | number> {
   const result = await upsert(
     payload,
@@ -346,6 +366,7 @@ async function main(): Promise<void> {
   const placeIds = await seedPlaces(payload)
   const authorId = await seedAuthor(payload)
   await seedGlobals(payload)
+  await seedPartners(payload)
   const issueId = await seedIssue(payload)
   await seedFilms(payload, authorId, issueId, tagIds, placeIds)
 

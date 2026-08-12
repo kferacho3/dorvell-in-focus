@@ -31,6 +31,15 @@ let schema drift ship to production undetected.
 
 ```bash
 createdb ferg_in_focus
+createdb ferg_in_focus_test    # integration tests run against their own database
+```
+
+The integration suite uses a separate database on purpose. Running it against
+your development database would delete your seeded content partway through a
+session, which is how people learn not to run the tests. Migrate it once:
+
+```bash
+DATABASE_URI=postgres://localhost:5432/ferg_in_focus_test pnpm cms:migrate
 ```
 
 The search layer needs two extensions. They are created by the first migration,
@@ -104,7 +113,16 @@ idempotent — it upserts on `legacySourceId` and never blind-creates.
 ## Verifying the setup
 
 ```bash
-pnpm check      # lint + typecheck + unit tests + production build
+pnpm check      # lint + typecheck + unit and integration tests + production build
+```
+
+Browser-based suites need Playwright's browsers. Chromium alone covers most of
+the projects; the `mobile-390` and `safari` projects need WebKit.
+
+```bash
+pnpm exec playwright install chromium   # enough for local work
+pnpm exec playwright install            # all three, as CI runs them
+pnpm test:e2e
 ```
 
 Then confirm by hand:
