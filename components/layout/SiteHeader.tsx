@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Wordmark } from '@/components/layout/FocusMark'
+import { ApertureMenu } from '@/components/navigation/ApertureMenu'
 import { ChannelNav } from '@/components/navigation/ChannelNav'
 import { getChannels } from '@/lib/cms/channel-settings'
 
@@ -62,57 +63,12 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
           </Link>
 
           {/*
-           * Native disclosure: no JavaScript required, correct semantics, and
-           * Escape/click-outside behavior handled by the browser on platforms
-           * that provide it. Module A layers over this later.
+           * The Aperture Menu renders this same native <details>. It is a
+           * client component so it can enhance the element after hydration —
+           * before that, and if the chunk never arrives, the browser's own
+           * disclosure behaviour is what opens the menu.
            */}
-          <details data-aperture-menu className="relative lg:hidden">
-            <summary
-              className={[
-                'type-kicker flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center',
-                'gap-2 [&::-webkit-details-marker]:hidden',
-              ].join(' ')}
-            >
-              <span className="sr-only-live">Open navigation menu</span>
-              <span aria-hidden className="flex flex-col gap-[5px]">
-                <span className="bg-channel-fg block h-px w-5" />
-                <span className="bg-channel-fg block h-px w-5" />
-              </span>
-              <span aria-hidden>Menu</span>
-            </summary>
-
-            <div
-              className={[
-                'bg-channel-bg border-channel-rule absolute top-full right-0 mt-px w-64 border p-5',
-                'shadow-(--shadow-lifted)',
-              ].join(' ')}
-            >
-              <ChannelNav channels={channels} current={channel} />
-
-              <ul className="border-channel-rule mt-5 space-y-3 border-t pt-5">
-                <li>
-                  <Link href="/search" className="type-kicker">
-                    Search
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/archive" className="type-kicker">
-                    Archive
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/newsletter" className="type-kicker">
-                    Newsletter
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="type-kicker">
-                    About
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </details>
+          <ApertureMenu channels={channels} current={channel} />
         </div>
       </div>
     </header>

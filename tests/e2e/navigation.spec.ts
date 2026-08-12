@@ -30,14 +30,29 @@ test.describe('channel navigation', () => {
   test('marks the current channel without relying on colour', async ({ page }) => {
     await page.goto('/motion')
 
-    const current = page
-      .getByRole('navigation', { name: 'Channels' })
-      .first()
-      .getByRole('link', { name: '4KFERG' })
+    /*
+     * Asserted against the DOM rather than a single nav instance, because the
+     * header renders channel navigation twice — once for wide viewports and
+     * once inside the menu — and which one is visible depends on the width.
+     *
+     * aria-current is the machine-readable signal; the rule and bullet are the
+     * visual ones. Colour alone would fail forced-colours mode.
+     */
+    const current = page.locator('[data-channel-nav] a[aria-current="page"]')
 
-    // aria-current is the machine-readable signal; the rule and bullet are the
-    // visual ones. Colour alone would fail forced-colours mode.
-    await expect(current).toHaveAttribute('aria-current', 'page')
+    // Asserted on href rather than the label: the visible text carries an
+    // aria-hidden bullet, and the channel's *name* is a CMS value that may
+    // change (ADR-0004). The route is the stable fact, and it is what makes
+    // "the right link is marked" unambiguous.
+    expect(await current.count()).toBeGreaterThan(0)
+    for (const link of await current.all()) {
+      await expect(link).toHaveAttribute('href', '/motion')
+    }
+
+    // And nothing else claims to be current.
+    await expect(page.locator('[data-channel-nav] a[aria-current="page"]')).toHaveCount(
+      await page.locator('[data-channel-nav]').count(),
+    )
   })
 })
 
