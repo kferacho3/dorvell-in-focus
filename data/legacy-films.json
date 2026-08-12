@@ -1,0 +1,733 @@
+{
+  "schema": "ferg-in-focus/legacy-films/v1",
+  "source": "/Users/kamal/Documents/dorvel-ferguson/src/content/creative.ts",
+  "sourceSystem": "dorvell-portfolio",
+  "note": "Read-only extraction. Rights and credits require human review before publication.",
+  "count": 26,
+  "films": [
+    {
+      "slug": "unbraided",
+      "title": "Unbraided",
+      "description": "A self-directed study of release — hair, frame, light, rhythm, and movement loosening together.",
+      "directorNote": "It starts outside, braided and composed, then moves indoors and never leaves the warm room again. The camera stays close enough to make the hands the subject: fingers working a braid loose, the weight of it dropping, the shape of the head changing frame by frame. Backlight through the blinds keeps him a silhouette while the work is still private, and only once the hair is fully out does the key come around to the face. The last look into the lens is the whole point — nothing has been added, something has just been let go.",
+      "category": "Cinematic Shorts",
+      "alsoIn": [
+        "Motion Studies"
+      ],
+      "moods": [
+        "cinematic",
+        "documentary",
+        "fashion",
+        "reflection",
+        "experimental"
+      ],
+      "tags": [
+        "hair",
+        "portrait",
+        "transformation",
+        "warm light",
+        "self-direction",
+        "motion",
+        "freedom"
+      ],
+      "type": "short",
+      "roles": [
+        "Concept",
+        "Performance",
+        "Direction",
+        "Shooting",
+        "Editing"
+      ],
+      "visualLanguage": "Window silhouette, warm interior key, hands in frame, macro on the braid, close-up eye, golden fall-off",
+      "synopsis": "A man stands outside in a red tank top, hair braided close to the scalp. The film moves indoors, where he works in front of a bright window — first as a backlit silhouette, then in close-up under warm lamplight. His hands take each braid apart in turn; the hair lifts and widens until it fills the frame. Macro shots hold on texture and on one eye. The final shot is a direct look into the lens with the hair fully loose. No dialogue; music-led throughout.",
+      "posts": {
+        "instagram": "https://www.instagram.com/reel/DbJx1roxURw/"
+      },
+      "filmIndex": 1,
+      "featured": true,
+      "status": "released",
+      "legacySourceId": "legacy:dorvellferguson:creative:unbraided",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/unbraided",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "look-up",
+      "title": "Look Up",
+      "description": "A held breath above the city — skyline, fading light, and a moment of stillness before the archive opens.",
+      "directorNote": "Eight seconds, two ideas. The skyline first, held long enough that the sky does the work: Tampa going magenta behind the Truist crown and the PNC tower, the whole grid dimming a stop at a time. Then the cut to the back of his head against a pale, emptied sky — no face, no eyeline, just the gesture of looking up. It was shot to be the smallest possible film, the kind you can put in the corner of a page and let breathe.",
+      "category": "Motion Studies",
+      "alsoIn": [
+        "City / Rooftop / Night"
+      ],
+      "moods": [
+        "cinematic",
+        "city",
+        "rooftop",
+        "nature"
+      ],
+      "tags": [
+        "skyline",
+        "sunset",
+        "breath",
+        "rooftop",
+        "silhouette",
+        "Tampa",
+        "atmosphere"
+      ],
+      "type": "motion-study",
+      "roles": [
+        "Concept",
+        "Shooting",
+        "Editing"
+      ],
+      "visualLanguage": "Locked wide on the skyline, long dusk hold, cut to a low back-of-head against open sky",
+      "synopsis": "The Tampa skyline at dusk, shot wide and static. The sky runs orange to magenta behind the towers; lit signage and windows pick out the buildings as the light drops. The film cuts to a low angle behind a man's head and shoulders, framed against a pale, near-empty sky, his face turned upward and away from camera. No dialogue; ambient and music-led.",
+      "posts": {
+        "instagram": "https://www.instagram.com/reel/DbWgmR1JtlY/"
+      },
+      "filmIndex": 2,
+      "motionPortal": {
+        "priority": 1
+      },
+      "featured": true,
+      "location": "Tampa, FL",
+      "status": "released",
+      "legacySourceId": "legacy:dorvellferguson:creative:look-up",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/look-up",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "sunset-study",
+      "title": "Sunset Study",
+      "description": "A vertical editing experiment built from a rooftop, a silhouette, repeating frames, and the last light of the day.",
+      "directorNote": "This one is about the cut, not the shot. Everything was captured on the same parking deck in the same twenty minutes, then taken apart in the edit: the same silhouette returning in different sizes, hard drops to black between beats, a defocus repeated until it reads as a rhythm instead of a mistake. It lives in a 9:16 canvas with the frame letterboxed inside it on purpose — built for the phone, framed like a film. This is the start of a lane, not a one-off.",
+      "category": "Editing Studies",
+      "alsoIn": [
+        "Motion Studies",
+        "City / Rooftop / Night"
+      ],
+      "moods": [
+        "experimental",
+        "cinematic",
+        "city",
+        "rooftop",
+        "reflection"
+      ],
+      "tags": [
+        "sunset",
+        "editing study",
+        "vertical",
+        "frame repetition",
+        "rooftop",
+        "silhouette",
+        "letterbox"
+      ],
+      "type": "motion-study",
+      "roles": [
+        "Concept",
+        "Performance",
+        "Shooting",
+        "Editing"
+      ],
+      "visualLanguage": "9:16 canvas with letterboxed frame, hard cuts to black, repeated silhouette, deliberate defocus",
+      "synopsis": "A vertical piece whose image sits letterboxed inside the frame, with black above and below. On a parking-deck roof at sunset, a man stands and then sits against the low wall, silhouetted against an orange and pink sky with towers and palms behind him. The edit cuts hard to black between beats and returns to the same silhouette at different sizes, ending on repeated, deliberately defocused frames of the figure against the colour. No dialogue; music-led.",
+      "posts": {
+        "instagram": "https://www.instagram.com/reel/Dbg1rEPxdJl/"
+      },
+      "filmIndex": 3,
+      "featured": true,
+      "location": "Tampa, FL",
+      "status": "released",
+      "legacySourceId": "legacy:dorvellferguson:creative:sunset-study",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/sunset-study",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "the-threshold",
+      "title": "The Threshold",
+      "description": "A short cinematic study built around shadow, reflection, discipline, and the feeling of stepping into frame.",
+      "directorNote": "The piece moves between silhouette, eye contact, abstract blur, and gym/body imagery — a visual study of pressure before action. Shoot him as a shape, never a face, and let the dusk bleed through the slats while the figure decides whether to cross the line between the room and the world.",
+      "category": "Cinematic Shorts",
+      "moods": [
+        "cinematic",
+        "liminal",
+        "shadow",
+        "suspense"
+      ],
+      "tags": [
+        "low light",
+        "blinds",
+        "closeup",
+        "mirror",
+        "body language",
+        "training"
+      ],
+      "type": "short",
+      "featured": true,
+      "hero": true,
+      "status": "released",
+      "legacySourceId": "legacy:dorvellferguson:creative:the-threshold",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/the-threshold",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "modeling-2",
+      "title": "Ember Cage",
+      "description": "Wire and ember bloom where a face should be, the studio held in blue silence.",
+      "directorNote": "Keep the key light flat and cold so the rust mask is the only pulse in frame, let the open leather and chain breathe, and shoot the turn slow enough that the wire crown trembles.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "experimental",
+        "surreal",
+        "cinematic",
+        "shadow"
+      ],
+      "tags": [
+        "mask",
+        "wire",
+        "ember",
+        "couture",
+        "chain",
+        "studio"
+      ],
+      "type": "photoshoot",
+      "featured": true,
+      "legacySourceId": "legacy:dorvellferguson:creative:modeling-2",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/modeling-2",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-4",
+      "title": "Leather Liturgy",
+      "description": "A silver cross holds the last warm light before black leather swallows it whole.",
+      "directorNote": "Shot from below in single-source chiaroscuro so cream light only grazes the beard, the zipper, and the crucifix while everything else dissolves into black.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "cinematic",
+        "fashion",
+        "shadow",
+        "experimental"
+      ],
+      "tags": [
+        "leather",
+        "crucifix",
+        "chiaroscuro",
+        "close-up",
+        "warm-light",
+        "shadow"
+      ],
+      "type": "photoshoot",
+      "featured": true,
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-4",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-4",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "modeling-1",
+      "title": "Twin Shadows",
+      "description": "One man crosses the white; two shadows follow where one should.",
+      "directorNote": "Head-on in a blown-out cove with hard cross-light, the cobalt hood carries the frame's only color while paired shadows fan out like wings, turning a simple walk into an arrival.",
+      "category": "Motion Studies",
+      "moods": [
+        "cinematic",
+        "fashion",
+        "shadow",
+        "reflection",
+        "experimental"
+      ],
+      "tags": [
+        "cobalt",
+        "hood",
+        "double-shadow",
+        "runway",
+        "silhouette",
+        "reflection"
+      ],
+      "type": "motion-study",
+      "featured": true,
+      "legacySourceId": "legacy:dorvellferguson:creative:modeling-1",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/modeling-1",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-5",
+      "title": "Crimson Exit",
+      "description": "He steps from a warm crimson doorway into winter, wrapped in fur and silence.",
+      "directorNote": "Let the vermilion facade read as a wall of heat and have him emerge from it — fur heavy, head bowed, loafers finding the snow — so the exit plays as reluctance rather than swagger.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "city",
+        "cinematic",
+        "liminal"
+      ],
+      "tags": [
+        "fur coat",
+        "crimson",
+        "storefront",
+        "snow",
+        "doorway",
+        "winter"
+      ],
+      "type": "photoshoot",
+      "featured": true,
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-5",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-5",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "fireworks",
+      "title": "The Gathering Hour",
+      "description": "A city holds its breath in the last warm light before the sky ignites.",
+      "directorNote": "Shoot wide and patient, letting the crowd's small movements and the Tampa skyline carry the anticipation while dusk haze does the emotional work, so every burst of color is saved for the sky itself.",
+      "category": "City / Rooftop / Night",
+      "moods": [
+        "cinematic",
+        "city",
+        "documentary",
+        "nature"
+      ],
+      "tags": [
+        "crowd",
+        "skyline",
+        "dusk",
+        "palms",
+        "gathering"
+      ],
+      "type": "video",
+      "featured": true,
+      "location": "Tampa, FL",
+      "legacySourceId": "legacy:dorvellferguson:creative:fireworks",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/fireworks",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "music-event-swaelee",
+      "title": "Nobody Breathe",
+      "description": "A crimson stage, a thousand glowing screens, and one breath held before the drop.",
+      "directorNote": "Shot from inside the crush of raised phones, letting the red wash sink the crowd into silhouette so the artist stays the only warm body in the frame.",
+      "category": "City / Rooftop / Night",
+      "moods": [
+        "cinematic",
+        "documentary",
+        "city",
+        "shadow"
+      ],
+      "tags": [
+        "concert",
+        "crimson",
+        "silhouette",
+        "crowd",
+        "phones",
+        "stage-light"
+      ],
+      "type": "video",
+      "featured": true,
+      "legacySourceId": "legacy:dorvellferguson:creative:music-event-swaelee",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/music-event-swaelee",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "modeling-5",
+      "title": "Gilded Ascent",
+      "description": "A phoenix in black walks the runway dark, gold burning at his chest.",
+      "directorNote": "Hold the walk on a long lens so the gold Quintus phoenix reads as a single moving ember while the seated crowd dissolves to shadow on either side.",
+      "category": "Motion Studies",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "shadow",
+        "documentary"
+      ],
+      "tags": [
+        "runway",
+        "phoenix",
+        "gold",
+        "silhouette",
+        "fashion-week",
+        "spotlight"
+      ],
+      "type": "motion-study",
+      "legacySourceId": "legacy:dorvellferguson:creative:modeling-5",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/modeling-5",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "modeling-4",
+      "title": "Skyline Cadence",
+      "description": "A man in black cuts across a burning skyline, keeping the city's time.",
+      "directorNote": "Shot the walk as one unbroken beat, letting the LED skyline breathe behind him so the runway reads like a lit street at midnight.",
+      "category": "Motion Studies",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "city",
+        "shadow"
+      ],
+      "tags": [
+        "runway",
+        "skyline",
+        "silhouette",
+        "monochrome",
+        "night",
+        "walk"
+      ],
+      "type": "motion-study",
+      "legacySourceId": "legacy:dorvellferguson:creative:modeling-4",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/modeling-4",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "modeling-3",
+      "title": "Amber Nocturne",
+      "description": "A silk-draped stride through the amber hush after hours.",
+      "directorNote": "Slow push-in on the approaching walk so the room reads as a runway he already owns, warm practicals held in tension against one cold teal screen.",
+      "category": "Motion Studies",
+      "moods": [
+        "cinematic",
+        "fashion",
+        "reflection",
+        "shadow"
+      ],
+      "tags": [
+        "walk",
+        "silk",
+        "medallion",
+        "amber",
+        "reflection",
+        "night"
+      ],
+      "type": "motion-study",
+      "legacySourceId": "legacy:dorvellferguson:creative:modeling-3",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/modeling-3",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-6",
+      "title": "Platform 9927",
+      "description": "Head bowed on cold tile, a figure in black holds the platform to himself.",
+      "directorNote": "Shoot him full-length and dead-center so the mirrored steel train car becomes a moving backdrop, letting the yellow edge-line and warm station bounce carry the only color against his all-black silhouette.",
+      "category": "City / Rooftop / Night",
+      "moods": [
+        "cinematic",
+        "city",
+        "fashion",
+        "documentary",
+        "shadow"
+      ],
+      "tags": [
+        "subway",
+        "all-black",
+        "overcoat",
+        "steel",
+        "platform",
+        "solitude"
+      ],
+      "type": "video",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-6",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-6",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-1",
+      "title": "Service Entrance",
+      "description": "Rust against teal, he turns a service door into a runway.",
+      "directorNote": "Shoot it flat and patient in overcast light — let the teal wall and the warm plaid fight for the frame while he holds dead-still, the only motion the tilt of his head.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "city",
+        "cinematic",
+        "experimental"
+      ],
+      "tags": [
+        "streetwear",
+        "teal",
+        "loading-dock",
+        "industrial",
+        "plaid",
+        "complementary"
+      ],
+      "type": "photoshoot",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-1",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-1",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-2",
+      "title": "Two Twenty-Three",
+      "description": "He pauses at door 223, bleached denim against slate, weekend not yet begun.",
+      "directorNote": "Shoot it flat and frontal so the painted facade reads as a stage flat, letting the bent profile, frayed hem, and lone cross-body strap carry all the motion.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "city",
+        "cinematic",
+        "documentary"
+      ],
+      "tags": [
+        "streetwear",
+        "denim",
+        "doorway",
+        "profile",
+        "slate",
+        "sidewalk"
+      ],
+      "type": "photoshoot",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-2",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-2",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-3",
+      "title": "Hothouse",
+      "description": "Barred light, borrowed ivy, one still figure holding the warm room together.",
+      "directorNote": "Root him dead-center between the twin orange chairs, let the louvered sun stripe the floor, and use the standing mirror to quietly double the look.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "shadow",
+        "reflection",
+        "nature"
+      ],
+      "tags": [
+        "sunroom",
+        "houseplants",
+        "louvered-light",
+        "mirror",
+        "layered-styling",
+        "warm-daylight"
+      ],
+      "type": "photoshoot",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-3",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-3",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-7",
+      "title": "Chrome & Cream",
+      "description": "Noon caught in chrome lenses, a face tilted just past the world's gaze.",
+      "directorNote": "Shoot tight and low so the mirrored lens becomes a second frame — let the reflected street tell its own story while the cream nova-check and diamond stud carry all the warmth.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "reflection",
+        "experimental"
+      ],
+      "tags": [
+        "sunglasses",
+        "reflection",
+        "plaid",
+        "close-up",
+        "daylight",
+        "streetwear"
+      ],
+      "type": "photoshoot",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-7",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-7",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-8",
+      "title": "Adornment",
+      "description": "He dresses like a rite — burgundy wool, raw denim, silver at the throat.",
+      "directorNote": "Shoot it close and unhurried, letting the hands, the layered pearls, and the tucked hem carry the scene while one soft key light holds the warm room.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "documentary",
+        "experimental"
+      ],
+      "tags": [
+        "burgundy",
+        "raw-denim",
+        "pearls",
+        "styling",
+        "warm-light",
+        "portrait"
+      ],
+      "type": "photoshoot",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-8",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-8",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "music-event-ian",
+      "title": "Red Hour",
+      "description": "Shades on in the black, one figure holds the red as the room goes to sound.",
+      "directorNote": "Let the darkness carry it — a single red-washed silhouette in sunglasses, the crowd reduced to shapes, so the yellow date lands like a flyer flashed in a dark room.",
+      "category": "Cinematic Shorts",
+      "moods": [
+        "cinematic",
+        "shadow",
+        "documentary",
+        "fashion"
+      ],
+      "tags": [
+        "night",
+        "red-light",
+        "sunglasses",
+        "silhouette",
+        "concert",
+        "crowd"
+      ],
+      "type": "short",
+      "legacySourceId": "legacy:dorvellferguson:creative:music-event-ian",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/music-event-ian",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "music-event",
+      "title": "Black Encore",
+      "description": "All leather and low light, he walks the dark toward a room that already knows him.",
+      "directorNote": "Shoot it as one unbroken push-in — keep him dead-center against the cool seamless wall and let the studded leather catch the only warm glint in an otherwise blacked-out frame.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "shadow",
+        "experimental"
+      ],
+      "tags": [
+        "silhouette",
+        "leather",
+        "runway",
+        "monochrome",
+        "low-light",
+        "stride"
+      ],
+      "type": "video",
+      "legacySourceId": "legacy:dorvellferguson:creative:music-event",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/music-event",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "sponsor-1",
+      "title": "Cold Front",
+      "description": "A red parcel burns against the white; the man stays cold.",
+      "directorNote": "Shot high-key on draped muslin so the red Cold Culture parcel reads as the only heat in the frame — stance, pearls, and wide-leg denim carry the pitch instead of the product.",
+      "category": "Creative Photoshoots",
+      "moods": [
+        "fashion",
+        "cinematic",
+        "documentary"
+      ],
+      "tags": [
+        "streetwear",
+        "high-key",
+        "red-accent",
+        "studio",
+        "pearls",
+        "product"
+      ],
+      "type": "photoshoot",
+      "legacySourceId": "legacy:dorvellferguson:creative:sponsor-1",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/sponsor-1",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "sponsor-2",
+      "title": "Salt Horizon",
+      "description": "He listens to something the ocean can't hear, back turned to the glare.",
+      "directorNote": "Hold a single over-the-shoulder as the blown-out horizon swallows the frame, letting the maroon collar and the thin white cord stay the only anchors in the light.",
+      "category": "Nature / Surreal",
+      "moods": [
+        "cinematic",
+        "nature",
+        "fashion",
+        "documentary"
+      ],
+      "tags": [
+        "ocean",
+        "over-the-shoulder",
+        "high-key",
+        "earbuds",
+        "coastal",
+        "profile"
+      ],
+      "type": "short",
+      "legacySourceId": "legacy:dorvellferguson:creative:sponsor-2",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/sponsor-2",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "misc-creative-9",
+      "title": "Corridor Serenade",
+      "description": "Between two doors, he borrows a stranger's song and sells it like his own.",
+      "directorNote": "Keep the lens low, close, and slightly warped so the corridor carpet and warm wood crowd the frame, and never let the take feel rehearsed.",
+      "category": "Comedy / Character",
+      "moods": [
+        "documentary",
+        "experimental",
+        "comedy",
+        "fashion"
+      ],
+      "tags": [
+        "selfie",
+        "corridor",
+        "lip-sync",
+        "handheld",
+        "pearls",
+        "candid"
+      ],
+      "type": "video",
+      "legacySourceId": "legacy:dorvellferguson:creative:misc-creative-9",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/misc-creative-9",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "kicked-out-1",
+      "title": "Eighty-Sixed",
+      "description": "Tossed to the frozen curb at closing time, he makes the exit a performance.",
+      "directorNote": "Shoot it handheld under the sodium light and let him stumble into frame — the joke lives in the recovery, not the fall.",
+      "category": "Comedy / Character",
+      "moods": [
+        "comedy",
+        "city",
+        "cinematic",
+        "fashion"
+      ],
+      "tags": [
+        "night",
+        "sidewalk",
+        "motion",
+        "streetlight",
+        "winter",
+        "candid"
+      ],
+      "type": "video",
+      "legacySourceId": "legacy:dorvellferguson:creative:kicked-out-1",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/kicked-out-1",
+      "rightsStatus": "needs-review"
+    },
+    {
+      "slug": "kicked-out-2",
+      "title": "Grand Exit",
+      "description": "Escorted out in camel and cobalt, he makes the pavement look rehearsed.",
+      "directorNote": "Shoot it wide and unbroken so the tailoring reads before the pratfall does — the joke is the dignity, never the tumble.",
+      "category": "Comedy / Character",
+      "moods": [
+        "comedy",
+        "city",
+        "fashion",
+        "documentary"
+      ],
+      "tags": [
+        "sidewalk",
+        "pratfall",
+        "camel-coat",
+        "cobalt",
+        "daylight",
+        "onlookers"
+      ],
+      "type": "video",
+      "legacySourceId": "legacy:dorvellferguson:creative:kicked-out-2",
+      "sourceUrl": "https://www.dorvellferguson.com/creative/kicked-out-2",
+      "rightsStatus": "needs-review"
+    }
+  ]
+}
