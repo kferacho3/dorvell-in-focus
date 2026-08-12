@@ -69,12 +69,7 @@ export default async function HomePage() {
 
             <div className="col-span-4 md:col-span-8 lg:col-span-5">
               {lead.leadMedia && (
-                <div
-                  className="crop-marks"
-                  style={
-                    { viewTransitionName: `story-${lead.id}` } as React.CSSProperties
-                  }
-                >
+                <div className="crop-marks" data-story-frame>
                   {/* The one genuine LCP candidate on this route. */}
                   <EditorialImage media={lead.leadMedia} sizes="lead" priority />
                 </div>

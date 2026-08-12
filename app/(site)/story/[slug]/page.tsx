@@ -91,7 +91,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
             <>
               <div
                 className="bleed"
-                style={{ viewTransitionName: `story-${story.id}` } as React.CSSProperties}
+                style={{ viewTransitionName: 'story-frame' } as React.CSSProperties}
               >
                 <EditorialImage media={story.leadMedia} sizes="fullBleed" priority />
               </div>
@@ -105,9 +105,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
               {story.leadMedia && (
                 <div
                   className="crop-marks mt-10"
-                  style={
-                    { viewTransitionName: `story-${story.id}` } as React.CSSProperties
-                  }
+                  style={{ viewTransitionName: 'story-frame' } as React.CSSProperties}
                 >
                   <EditorialImage media={story.leadMedia} sizes="lead" priority />
                 </div>

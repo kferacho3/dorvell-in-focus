@@ -41,18 +41,26 @@ export function StoryCard({
 }: StoryCardProps) {
   const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4'
   const headline = story.cardHeadlineOverride || story.title
-  const transitionKey = `story-${story.id}`
 
   return (
     <article
       className={cn('group relative flex flex-col', className)}
-      data-channel={story.channel ?? undefined}
+      // `data-accent`, not `data-channel`: a card points at a channel, it does
+      // not sit inside one. Taking the whole environment would drag 4KFERG's
+      // near-black rule colour onto the light homepage.
+      data-accent={story.channel ?? undefined}
     >
       {story.leadMedia && (
         <div
           className="crop-marks mb-5 overflow-hidden"
-          style={{ viewTransitionName: transitionKey } as React.CSSProperties}
-          data-transition-key={transitionKey}
+          /*
+           * Marks this image as the shared-frame candidate. The transition name
+           * itself is assigned at click time by SharedStoryFrame, because
+           * `view-transition-name` must be unique in the document — baking a
+           * per-story name into every card breaks as soon as one story appears
+           * twice on a page.
+           */
+          data-story-frame
         >
           <EditorialImage
             media={story.leadMedia}

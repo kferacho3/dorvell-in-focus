@@ -1,5 +1,6 @@
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader } from '@/components/layout/SiteHeader'
+import { SharedStoryFrame } from '@/components/motion/SharedStoryFrame'
 
 import type { ThemeKey } from '@/lib/channels'
 
@@ -41,6 +42,12 @@ export function PublicationShell({ channel, children }: PublicationShellProps) {
       </main>
 
       <SiteFooter />
+
+      {/*
+       * The only client island in the shell. It renders nothing and attaches to
+       * links that already work, so navigation is never waiting on it.
+       */}
+      <SharedStoryFrame />
     </div>
   )
 }
