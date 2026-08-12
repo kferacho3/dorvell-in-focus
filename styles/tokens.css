@@ -156,6 +156,33 @@
   --channel-key: 'x';
 }
 
+/**
+ * Accent-only channel reference.
+ *
+ * `data-channel` swaps the *whole* environment — surface, foreground, rule,
+ * and accent. That is right for a page and wrong for a card: a 4KFERG card
+ * sitting on the light homepage would inherit the Screening Room's near-black
+ * rule colour and read as selected.
+ *
+ * `data-accent` borrows only the accent, so a card can point at a channel
+ * without pretending to be inside it.
+ */
+[data-accent='photography'] {
+  --channel-accent: #2457ff;
+}
+[data-accent='motion'] {
+  --channel-accent: #ff6638;
+}
+[data-accent='stories'] {
+  --channel-accent: #7e2431;
+}
+[data-accent='modeling'] {
+  --channel-accent: #7657ff;
+}
+[data-accent='x'] {
+  --channel-accent: var(--partner-accent, #0a756d);
+}
+
 /* -------------------------------------------------------------- layout -- */
 
 @utility shell {
