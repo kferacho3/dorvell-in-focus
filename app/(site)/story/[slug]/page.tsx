@@ -5,12 +5,14 @@ import { StoryCard } from '@/components/editorial/StoryCard'
 import { StoryMeta } from '@/components/editorial/StoryMeta'
 import { PublicationShell } from '@/components/layout/PublicationShell'
 import { EditorialImage } from '@/components/media/EditorialImage'
-import { isChannelKey } from '@/lib/channels'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { CHANNELS, isChannelKey } from '@/lib/channels'
 import {
   getAllPublishedSlugs,
   getRelatedStories,
   getStoryBySlug,
 } from '@/lib/cms/queries'
+import { breadcrumbSchema, storySchema, videoSchema } from '@/lib/seo/structured-data'
 
 import type { Metadata } from 'next'
 
@@ -61,8 +63,27 @@ export default async function StoryPage({ params }: StoryPageProps) {
   const channel = isChannelKey(story.channel) ? story.channel : 'publication'
   const isFullBleedLead = story.leadVariant === 'fullBleed'
 
+  const channelDefinition = isChannelKey(story.channel) ? CHANNELS[story.channel] : null
+
   return (
     <PublicationShell channel={channel}>
+      {/*
+       * Structured data describes what is genuinely on this page. VideoObject
+       * appears only for films that carry every field Google requires — an
+       * incomplete object is a validation error, not a rich result.
+       */}
+      <JsonLd schema={storySchema(story)} />
+      <JsonLd schema={videoSchema(story)} />
+      <JsonLd
+        schema={breadcrumbSchema([
+          { name: 'FERG IN FOCUS', path: '/' },
+          ...(channelDefinition
+            ? [{ name: channelDefinition.fallbackLabel, path: channelDefinition.route }]
+            : []),
+          { name: story.title, path: `/story/${story.slug}` },
+        ])}
+      />
+
       <article>
         {/* --- Header --------------------------------------------------- */}
         <header className={isFullBleedLead ? '' : 'shell pt-14 pb-10 lg:pt-20'}>

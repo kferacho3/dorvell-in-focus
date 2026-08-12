@@ -76,6 +76,21 @@ export default buildConfig({
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URI },
     migrationDir: path.resolve(dirname, 'payload/migrations'),
+    /*
+     * Migrations are the only way the schema changes — including locally.
+     *
+     * Payload's default in development is to push schema changes straight to
+     * the database. That is convenient and it is exactly how schema drift
+     * reaches production: the local database quietly diverges from the
+     * committed migrations, and the next `payload migrate` refuses to run
+     * without a data-loss prompt because it can no longer tell what state the
+     * database is in.
+     *
+     * With push disabled, a schema change means `pnpm cms:migrate:create`,
+     * which produces a file that gets reviewed, committed, and replayed
+     * identically in CI and production (ADR-0003).
+     */
+    push: false,
   }),
 
   secret: process.env.PAYLOAD_SECRET ?? '',
