@@ -46,6 +46,10 @@ export async function SiteFooter() {
             </p>
             <a
               href={PORTFOLIO_URL}
+              data-focus-target
+              data-focus-id="footer-portfolio"
+              data-focus-label="Portfolio and booking"
+              data-focus-inset="4"
               className="type-kicker border-channel-fg/25 hover:border-channel-accent mt-6 inline-block border-b pb-1 transition-colors"
             >
               Portfolio &amp; booking
@@ -59,7 +63,15 @@ export async function SiteFooter() {
             <ul className="mt-5 space-y-3">
               {channels.map((channel) => (
                 <li key={channel.key}>
-                  <Link href={channel.route} className="type-kicker hover:opacity-60">
+                  <Link
+                    href={channel.route}
+                    data-focus-target
+                    data-focus-id={`footer-channel-${channel.key}`}
+                    data-focus-label={channel.label}
+                    data-focus-theme={channel.key}
+                    data-focus-inset="4"
+                    className="type-kicker hover:opacity-60"
+                  >
                     {channel.label}
                   </Link>
                 </li>
@@ -74,7 +86,14 @@ export async function SiteFooter() {
             <ul className="mt-5 space-y-3">
               {READ_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="type-kicker hover:opacity-60">
+                  <Link
+                    href={link.href}
+                    data-focus-target
+                    data-focus-id={`footer-${link.label.toLowerCase()}`}
+                    data-focus-label={link.label}
+                    data-focus-inset="4"
+                    className="type-kicker hover:opacity-60"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -93,6 +112,10 @@ export async function SiteFooter() {
                     href={social.href}
                     rel="me noopener noreferrer"
                     target="_blank"
+                    data-focus-target
+                    data-focus-id={`footer-social-${social.key}`}
+                    data-focus-label={`${social.handle} on ${social.platform}`}
+                    data-focus-inset="4"
                     className="type-kicker inline-flex items-center gap-2.5 hover:opacity-60"
                   >
                     <SocialIcon name={social.key} className="text-channel-muted" />
@@ -121,6 +144,10 @@ export async function SiteFooter() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  data-focus-target
+                  data-focus-id={`footer-legal-${link.label.toLowerCase()}`}
+                  data-focus-label={link.label}
+                  data-focus-inset="4"
                   className="type-meta text-channel-muted hover:opacity-60"
                 >
                   {link.label}

@@ -70,6 +70,11 @@ export function VideoPlayer({
           video.isVertical && 'max-w-[26rem]',
         )}
         style={{ aspectRatio: video.aspectRatio }}
+        data-focus-target
+        data-focus-id={id}
+        data-focus-label={video.title}
+        data-focus-inset="7"
+        data-focus-priority="2"
       >
         <video
           id={id}

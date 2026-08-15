@@ -32,11 +32,20 @@ export async function ChannelLanding({ channel, children }: ChannelLandingProps)
   return (
     <PublicationShell channel={channel}>
       <section className="shell border-channel-rule border-b py-14 lg:py-20">
-        <p className="type-meta text-channel-accent">{resolved.tagline}</p>
-        <h1 className="type-h1 mt-5 max-w-[14ch]">{resolved.label}</h1>
-        <p className="type-lead text-channel-muted measure mt-6">
-          {resolved.description}
-        </p>
+        <div
+          className="measure"
+          data-focus-target
+          data-focus-default="true"
+          data-focus-id={`${channel}-hero`}
+          data-focus-label={resolved.label}
+          data-focus-theme={channel}
+          data-focus-inset="10"
+          data-focus-point={channel === 'motion' || undefined}
+        >
+          <p className="type-meta text-channel-accent">{resolved.tagline}</p>
+          <h1 className="type-h1 mt-5 max-w-[14ch]">{resolved.label}</h1>
+          <p className="type-lead text-channel-muted mt-6">{resolved.description}</p>
+        </div>
       </section>
 
       {children}

@@ -295,6 +295,10 @@ export function ApertureMenu({ channels, current }: ApertureMenuProps) {
         ref={summaryRef as React.RefObject<HTMLElement>}
         onClick={toggle}
         aria-expanded={isOpen}
+        data-focus-target
+        data-focus-id="aperture-menu-trigger"
+        data-focus-label={isOpen ? 'Close navigation' : 'Open navigation'}
+        data-focus-inset="3"
         className="type-kicker flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center gap-2 [&::-webkit-details-marker]:hidden"
       >
         <span className="sr-only-live">{isOpen ? 'Close' : 'Open'} navigation menu</span>
@@ -312,12 +316,19 @@ export function ApertureMenu({ channels, current }: ApertureMenuProps) {
         inert={state === 'closing' ? true : undefined}
         className="bg-channel-bg border-channel-rule absolute top-full right-0 mt-px w-64 border p-5 shadow-(--shadow-lifted)"
       >
-        <ChannelNav channels={channels} current={current} />
+        <ChannelNav channels={channels} current={current} idPrefix="menu-channel" />
 
         <ul className="border-channel-rule mt-5 space-y-3 border-t pt-5">
           {SECONDARY_LINKS.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="type-kicker">
+              <Link
+                href={link.href}
+                data-focus-target
+                data-focus-id={`menu-${link.label.toLowerCase()}`}
+                data-focus-label={link.label}
+                data-focus-inset="4"
+                className="type-kicker"
+              >
                 {link.label}
               </Link>
             </li>

@@ -34,34 +34,47 @@ export function EntityLanding({
   return (
     <PublicationShell channel="publication">
       <section className="shell border-channel-rule border-b py-14 lg:py-20">
-        <p className="type-meta text-channel-muted">{kicker}</p>
-        <h1 className="type-h1 mt-5">{name}</h1>
+        <div
+          className="measure"
+          data-focus-target
+          data-focus-default="true"
+          data-focus-id={`entity-${name.toLowerCase().replaceAll(' ', '-')}`}
+          data-focus-label={name}
+          data-focus-inset="10"
+        >
+          <p className="type-meta text-channel-muted">{kicker}</p>
+          <h1 className="type-h1 mt-5">{name}</h1>
 
-        {detail && <p className="type-lead text-channel-muted mt-4">{detail}</p>}
-        {description && <p className="type-body measure mt-6">{description}</p>}
+          {detail && <p className="type-lead text-channel-muted mt-4">{detail}</p>}
+          {description && <p className="type-body mt-6">{description}</p>}
 
-        {links && links.length > 0 && (
-          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-            {links.map((link) => (
-              <li key={link.url}>
-                <a
-                  href={link.url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="type-kicker underline underline-offset-4"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+          {links && links.length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              {links.map((link) => (
+                <li key={link.url}>
+                  <a
+                    href={link.url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    data-focus-target
+                    data-focus-id={`entity-link-${link.label.toLowerCase().replaceAll(' ', '-')}`}
+                    data-focus-label={link.label}
+                    data-focus-inset="4"
+                    className="type-kicker underline underline-offset-4"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
 
-        <p className="type-meta text-channel-muted mt-8">
-          {total === 0
-            ? 'No published work yet'
-            : `${total} ${total === 1 ? 'story' : 'stories'}`}
-        </p>
+          <p className="type-meta text-channel-muted mt-8">
+            {total === 0
+              ? 'No published work yet'
+              : `${total} ${total === 1 ? 'story' : 'stories'}`}
+          </p>
+        </div>
       </section>
 
       {stories.length > 0 ? (

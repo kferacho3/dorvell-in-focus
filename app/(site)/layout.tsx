@@ -1,5 +1,6 @@
 import { Geist, IBM_Plex_Mono, Instrument_Serif } from 'next/font/google'
 
+import { FocalLockProvider } from '@/components/focal-lock/FocalLockProvider'
 import { MOTION_PREFERENCE_SCRIPT } from '@/lib/motion/preference'
 
 import type { Metadata, Viewport } from 'next'
@@ -54,6 +55,14 @@ export const metadata: Metadata = {
   applicationName: 'FERG IN FOCUS',
   authors: [{ name: 'Dorvell Ferguson Jr.' }],
   creator: 'Dorvell Ferguson Jr.',
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     type: 'website',
     siteName: 'FERG IN FOCUS',
@@ -96,7 +105,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           suppressHydrationWarning
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <FocalLockProvider>{children}</FocalLockProvider>
+      </body>
     </html>
   )
 }

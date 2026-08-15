@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">FERG IN FOCUS symbol</title>
+  <desc id="desc">A minimal camera focus frame surrounding a geometric letter F, with a small recording dot.</desc>
+  <g fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M188 96H96v92"/>
+    <path d="M324 96h92v92"/>
+    <path d="M416 324v92h-92"/>
+    <path d="M188 416H96v-92"/>
+    <path d="M238 350V166h104"/>
+    <path d="M238 244h78"/>
+  </g>
+  <circle cx="184" cy="178" r="14" fill="#FF2A2A"/>
+</svg>

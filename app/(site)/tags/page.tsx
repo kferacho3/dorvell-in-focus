@@ -68,6 +68,10 @@ export default async function TagsIndexPage() {
                 <li key={tag.id}>
                   <Link
                     href={`/tags/${tag.slug}`}
+                    data-focus-target
+                    data-focus-id={`tag-${tag.id}`}
+                    data-focus-label={tag.label}
+                    data-focus-inset="5"
                     className="type-kicker text-channel-fg/85 hover:text-channel-accent inline-flex items-baseline gap-2 transition-colors"
                   >
                     <span className="border-channel-fg/20 hover:border-channel-accent border-b pb-0.5">

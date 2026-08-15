@@ -174,7 +174,16 @@ function StoryHeading({ story }: { story: Awaited<ReturnType<typeof getStoryBySl
   if (!story) return null
 
   return (
-    <div className="measure">
+    <div
+      className="measure"
+      data-focus-target
+      data-focus-default="true"
+      data-focus-id={`story-destination-${story.id}`}
+      data-focus-label={story.title}
+      data-focus-theme={story.channel ?? undefined}
+      data-focus-inset="10"
+      data-focus-point={story.channel === 'motion' || undefined}
+    >
       {story.kicker && (
         <p className="type-meta text-channel-accent mb-4">{story.kicker}</p>
       )}

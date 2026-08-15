@@ -1,0 +1,52 @@
+.ferg-mark {
+  overflow: visible;
+}
+
+.ferg-mark__corner,
+.ferg-mark__point {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 180ms var(--ease-enter),
+    opacity 160ms var(--ease-enter);
+}
+
+.ferg-mark__point {
+  opacity: 0.5;
+}
+
+.ferg-brand-link:hover .ferg-mark__corner--tl,
+.ferg-brand-link:focus-visible .ferg-mark__corner--tl {
+  transform: translate(-4px, -4px);
+}
+
+.ferg-brand-link:hover .ferg-mark__corner--tr,
+.ferg-brand-link:focus-visible .ferg-mark__corner--tr {
+  transform: translate(4px, -4px);
+}
+
+.ferg-brand-link:hover .ferg-mark__corner--br,
+.ferg-brand-link:focus-visible .ferg-mark__corner--br {
+  transform: translate(4px, 4px);
+}
+
+.ferg-brand-link:hover .ferg-mark__corner--bl,
+.ferg-brand-link:focus-visible .ferg-mark__corner--bl {
+  transform: translate(-4px, 4px);
+}
+
+.ferg-brand-link:hover .ferg-mark__point,
+.ferg-brand-link:focus-visible .ferg-mark__point {
+  opacity: 1;
+}
+
+.ferg-brand-link:active .ferg-mark__corner {
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ferg-mark__corner,
+  .ferg-mark__point {
+    transition-duration: 0ms;
+  }
+}

@@ -51,7 +51,16 @@ export default async function HomePage() {
       {/* --- Lead feature ----------------------------------------------- */}
       {lead ? (
         <section className="shell py-14 lg:py-20" aria-labelledby="lead-heading">
-          <div className="editorial-grid items-end">
+          <div
+            className="editorial-grid items-end"
+            data-focus-target
+            data-focus-default="true"
+            data-focus-id={`lead-${lead.id}`}
+            data-focus-label={lead.title}
+            data-focus-theme={lead.channel ?? 'publication'}
+            data-focus-inset="10"
+            data-focus-point="true"
+          >
             <div className="col-span-4 md:col-span-8 lg:col-span-7">
               {lead.kicker && (
                 <p className="type-meta text-channel-accent mb-4">{lead.kicker}</p>
@@ -79,14 +88,24 @@ export default async function HomePage() {
         </section>
       ) : (
         <section className="shell py-20 lg:py-28">
-          {/* The issue line above already states the issue; repeating it here
-              would be the masthead talking to itself. */}
-          <h1 className="type-display-l max-w-[14ch]">Life through a creative lens.</h1>
-          <p className="type-lead text-channel-muted measure mt-8">
-            An independent visual publication from Dorvell Ferguson Jr. — where
-            photographs, films, reporting, modeling, and collaborations become complete
-            stories rather than isolated posts. The first issue is in production.
-          </p>
+          <div
+            className="measure"
+            data-focus-target
+            data-focus-default="true"
+            data-focus-id="publication-hero"
+            data-focus-label="Life through a creative lens"
+            data-focus-inset="10"
+            data-focus-point="true"
+          >
+            {/* The issue line above already states the issue; repeating it here
+                would be the masthead talking to itself. */}
+            <h1 className="type-display-l max-w-[14ch]">Life through a creative lens.</h1>
+            <p className="type-lead text-channel-muted mt-8">
+              An independent visual publication from Dorvell Ferguson Jr. — where
+              photographs, films, reporting, modeling, and collaborations become complete
+              stories rather than isolated posts. The first issue is in production.
+            </p>
+          </div>
         </section>
       )}
 
@@ -111,6 +130,11 @@ export default async function HomePage() {
               <Link
                 href={channel.route}
                 data-accent={channel.key}
+                data-focus-target
+                data-focus-id={`channel-card-${channel.key}`}
+                data-focus-label={channel.label}
+                data-focus-theme={channel.key}
+                data-focus-inset="7"
                 className="group border-channel-rule hover:border-channel-accent block h-full border p-6 transition-colors"
               >
                 <span className="type-kicker text-channel-accent">{channel.label}</span>
@@ -168,6 +192,10 @@ export default async function HomePage() {
           </p>
           <Link
             href="/newsletter"
+            data-focus-target
+            data-focus-id="home-newsletter"
+            data-focus-label="Keep It In Focus"
+            data-focus-inset="5"
             className="type-kicker border-channel-fg/30 hover:border-channel-accent mt-6 inline-block border px-5 py-3 transition-colors"
           >
             Subscribe

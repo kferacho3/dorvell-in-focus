@@ -19,12 +19,21 @@ export function StaticPage({ kicker, title, lead, updated, children }: StaticPag
   return (
     <PublicationShell channel="publication">
       <section className="shell border-channel-rule border-b py-14 lg:py-20">
-        {kicker && <p className="type-meta text-channel-muted">{kicker}</p>}
-        <h1 className="type-h1 mt-5 max-w-[18ch]">{title}</h1>
-        {lead && <p className="type-lead text-channel-muted measure mt-6">{lead}</p>}
-        {updated && (
-          <p className="type-meta text-channel-muted mt-6">Last updated {updated}</p>
-        )}
+        <div
+          className="measure"
+          data-focus-target
+          data-focus-default="true"
+          data-focus-id={`page-${title.toLowerCase().replaceAll(' ', '-')}`}
+          data-focus-label={title}
+          data-focus-inset="10"
+        >
+          {kicker && <p className="type-meta text-channel-muted">{kicker}</p>}
+          <h1 className="type-h1 mt-5 max-w-[18ch]">{title}</h1>
+          {lead && <p className="type-lead text-channel-muted mt-6">{lead}</p>}
+          {updated && (
+            <p className="type-meta text-channel-muted mt-6">Last updated {updated}</p>
+          )}
+        </div>
       </section>
 
       <section className="shell py-12">

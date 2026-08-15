@@ -45,6 +45,13 @@ export function StoryCard({
   return (
     <article
       className={cn('group relative flex flex-col', className)}
+      data-focus-target
+      data-focus-id={`story-${story.id}`}
+      data-focus-label={headline}
+      data-focus-theme={story.channel ?? undefined}
+      data-focus-inset={emphasis === 'feature' ? '10' : '8'}
+      data-focus-point={emphasis === 'feature' || undefined}
+      data-focus-priority="2"
       // `data-accent`, not `data-channel`: a card points at a channel, it does
       // not sit inside one. Taking the whole environment would drag 4KFERG's
       // near-black rule colour onto the light homepage.

@@ -38,11 +38,26 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
       ].join(' ')}
     >
       <div className="shell flex h-(--header-height) items-center justify-between gap-6">
-        <Link href="/" className="shrink-0" aria-label="FERG IN FOCUS — publication home">
+        <Link
+          href="/"
+          data-site-logo
+          data-focus-target
+          data-focus-id="site-logo"
+          data-focus-label="Publication home"
+          data-focus-inset="5"
+          data-focus-point="true"
+          className="ferg-brand-link shrink-0"
+          aria-label="FERG IN FOCUS — publication home"
+        >
           <Wordmark />
         </Link>
 
-        <ChannelNav channels={channels} current={channel} className="hidden lg:block" />
+        <ChannelNav
+          channels={channels}
+          current={channel}
+          idPrefix="header-channel"
+          className="hidden lg:block"
+        />
 
         <div className="flex items-center gap-4">
           <form
@@ -60,10 +75,18 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
               type="search"
               autoComplete="off"
               placeholder="Search…"
+              data-focus-target
+              data-focus-id="header-search"
+              data-focus-label="Search"
+              data-focus-inset="3"
               className="type-kicker text-channel-fg placeholder:text-channel-muted min-h-10 w-36 bg-transparent px-3 py-2 outline-none lg:w-48"
             />
             <button
               type="submit"
+              data-focus-target
+              data-focus-id="header-search-submit"
+              data-focus-label="Run search"
+              data-focus-inset="3"
               className="type-kicker text-channel-muted hover:text-channel-accent border-channel-fg/20 min-h-10 border-l px-3 transition-colors"
             >
               Go
@@ -72,6 +95,9 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
 
           <Link
             href="/tags"
+            data-focus-target
+            data-focus-id="header-tags"
+            data-focus-label="Browse tags"
             className="type-kicker hidden opacity-70 hover:opacity-100 md:inline"
           >
             Tags
@@ -79,6 +105,10 @@ export async function SiteHeader({ channel }: SiteHeaderProps) {
 
           <Link
             href="/newsletter"
+            data-focus-target
+            data-focus-id="header-newsletter"
+            data-focus-label="Newsletter"
+            data-focus-inset="4"
             className={[
               'type-kicker border-channel-fg/25 hover:border-channel-accent hidden border px-3 py-2',
               'transition-colors duration-200 lg:inline-block',

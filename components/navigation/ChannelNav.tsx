@@ -9,6 +9,7 @@ type ChannelNavProps = {
   channels: readonly ResolvedChannel[]
   current: ThemeKey
   className?: string
+  idPrefix?: string
 }
 
 /**
@@ -22,7 +23,12 @@ type ChannelNavProps = {
  * Plain links, server-rendered. Navigation works before any JavaScript loads,
  * and the motion layer attaches to these same anchors later.
  */
-export function ChannelNav({ channels, current, className }: ChannelNavProps) {
+export function ChannelNav({
+  channels,
+  current,
+  className,
+  idPrefix = 'channel-nav',
+}: ChannelNavProps) {
   return (
     <nav data-channel-nav aria-label="Channels" className={className}>
       <ul className="flex items-center gap-x-6 gap-y-2 lg:gap-x-8">
@@ -34,6 +40,12 @@ export function ChannelNav({ channels, current, className }: ChannelNavProps) {
               <Link
                 href={channel.route}
                 aria-current={isCurrent ? 'page' : undefined}
+                data-focus-target
+                data-focus-id={`${idPrefix}-${channel.key}`}
+                data-focus-label={channel.label}
+                data-focus-theme={channel.key}
+                data-focus-point={isCurrent || undefined}
+                data-focus-inset="4"
                 className={cn(
                   'type-kicker group relative inline-flex items-center gap-1.5 py-2',
                   'transition-opacity duration-200',

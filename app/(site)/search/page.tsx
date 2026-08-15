@@ -79,11 +79,19 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               defaultValue={q}
               autoComplete="off"
               placeholder="unbraided, rooftop, Tampa…"
+              data-focus-target
+              data-focus-id="search-query"
+              data-focus-label="Search query"
+              data-focus-inset="4"
               className="border-channel-fg/25 focus-visible:border-channel-accent type-body min-h-11 flex-1 border bg-transparent px-4 py-2 outline-none"
             />
             {channel && <input type="hidden" name="channel" value={channel} />}
             <button
               type="submit"
+              data-focus-target
+              data-focus-id="search-submit"
+              data-focus-label="Search"
+              data-focus-inset="4"
               className="type-kicker border-channel-fg/30 hover:border-channel-accent min-h-11 border px-5 transition-colors"
             >
               Search
@@ -123,6 +131,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 <li key={tag.id}>
                   <Link
                     href={`/tags/${tag.slug}`}
+                    data-focus-target
+                    data-focus-id={`search-tag-${tag.id}`}
+                    data-focus-label={tag.label}
+                    data-focus-inset="4"
                     className="type-kicker text-channel-fg/85 hover:text-channel-accent inline-flex items-baseline gap-2 transition-colors"
                   >
                     <span className="border-channel-fg/20 hover:border-channel-accent border-b pb-0.5">
@@ -148,6 +160,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 <Link
                   href={hrefFor({ channel: undefined, page: 1 })}
                   aria-current={!channel ? 'true' : undefined}
+                  data-focus-target
+                  data-focus-id="search-filter-all"
+                  data-focus-label="All channels"
+                  data-focus-inset="4"
                   className={cn(
                     'type-kicker',
                     channel ? 'opacity-60 hover:opacity-100' : '',
@@ -162,6 +178,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                     href={hrefFor({ channel: entry.key, page: 1 })}
                     aria-current={channel === entry.key ? 'true' : undefined}
                     data-accent={entry.key}
+                    data-focus-target
+                    data-focus-id={`search-filter-${entry.key}`}
+                    data-focus-label={entry.fallbackLabel}
+                    data-focus-theme={entry.key}
+                    data-focus-inset="4"
                     className={cn(
                       'type-kicker',
                       channel === entry.key
@@ -203,7 +224,14 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               <ol className="border-channel-rule divide-channel-rule mt-8 divide-y border-t">
                 {result.hits.map((hit) => (
                   <li key={hit.id} className="py-6">
-                    <article data-accent={hit.channel ?? undefined}>
+                    <article
+                      data-accent={hit.channel ?? undefined}
+                      data-focus-target
+                      data-focus-id={`search-result-${hit.id}`}
+                      data-focus-label={hit.title}
+                      data-focus-theme={hit.channel ?? undefined}
+                      data-focus-inset="7"
+                    >
                       <p className="type-meta text-channel-muted flex flex-wrap gap-x-3">
                         {hit.channel && (
                           <span className="text-channel-accent">
@@ -262,6 +290,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   <Link
                     href={hrefFor({ page: page - 1 })}
                     rel="prev"
+                    data-focus-target
+                    data-focus-id="search-previous"
+                    data-focus-label="Previous page"
+                    data-focus-inset="4"
                     className="type-kicker"
                   >
                     ← Previous
@@ -276,6 +308,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   <Link
                     href={hrefFor({ page: page + 1 })}
                     rel="next"
+                    data-focus-target
+                    data-focus-id="search-next"
+                    data-focus-label="Next page"
+                    data-focus-inset="4"
                     className="type-kicker"
                   >
                     Next →
