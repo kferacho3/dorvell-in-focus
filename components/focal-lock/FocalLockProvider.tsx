@@ -40,14 +40,13 @@ export function FocalLockProvider({ children }: { children: React.ReactNode }) {
   const frameRef = useRef<HTMLDivElement>(null)
   const activeTargetRef = useRef<HTMLElement | null>(null)
   const activeObserverRef = useRef<ResizeObserver | null>(null)
-  const timelineRef = useRef<gsap.core.Timeline | null>(null)
   const modalityRef = useRef<'pointer' | 'keyboard'>('pointer')
   const scrollFrameRef = useRef<number | null>(null)
   const touchScrollTimerRef = useRef<number | null>(null)
   const firstEntryRef = useRef(false)
 
   useEffect(() => {
-    timelineRef.current = gsap.timeline()
+    const frame = frameRef.current
     try {
       firstEntryRef.current = !sessionStorage.getItem(ENTRY_SESSION_KEY)
       sessionStorage.setItem(ENTRY_SESSION_KEY, 'seen')
@@ -56,8 +55,9 @@ export function FocalLockProvider({ children }: { children: React.ReactNode }) {
     }
 
     return () => {
-      timelineRef.current?.kill()
-      timelineRef.current = null
+      if (!frame) return
+      gsap.killTweensOf(frame)
+      gsap.killTweensOf(frame.querySelectorAll('.focus-frame__corner'))
     }
   }, [])
 
@@ -98,9 +98,9 @@ export function FocalLockProvider({ children }: { children: React.ReactNode }) {
     }
 
     const reduced = prefersReducedMotion()
-    const timeline = timelineRef.current
-    if (!timeline || immediate || reduced) {
-      timeline?.clear()
+    if (immediate || reduced) {
+      gsap.killTweensOf(frame)
+      frame.removeAttribute('data-moving')
       gsap.set(frame, target)
       if (reduced && !immediate) {
         gsap.fromTo(
@@ -113,50 +113,55 @@ export function FocalLockProvider({ children }: { children: React.ReactNode }) {
     }
 
     const corners = frame.querySelectorAll<HTMLElement>('.focus-frame__corner')
-    timeline.clear()
 
     if (firstEntryRef.current) {
       firstEntryRef.current = false
-      gsap.set(frame, {
-        x: window.innerWidth / 2 - 36,
-        y: window.innerHeight / 2 - 36,
-        width: 72,
-        height: 72,
-        opacity: 0,
-      })
-      timeline
-        .to(frame, { opacity: 0.72, duration: 0.14, ease: 'power2.out' })
-        .to(frame, { ...target, duration: 0.54, ease: 'power3.out' })
-        .fromTo(
-          corners,
-          { scale: 0.93 },
-          { scale: 1, duration: 0.12, ease: 'back.out(1.25)', clearProps: 'transform' },
-        )
+      gsap.set(frame, { ...target, opacity: 0 })
+      gsap.to(frame, { opacity: 1, duration: 0.18, ease: 'power2.out' })
       return
     }
 
-    timeline
-      .to(frame, { ...target, duration: 0.26, ease: 'power3.out', overwrite: 'auto' })
-      .fromTo(
-        corners,
-        { scale: 0.96 },
-        {
-          scale: 1,
-          duration: 0.12,
-          ease: 'back.out(1.25)',
-          clearProps: 'transform',
-          stagger: 0.008,
-        },
-        '-=0.08',
-      )
+    frame.dataset.moving = 'true'
+    gsap.to(frame, {
+      ...target,
+      duration: 0.32,
+      ease: 'power3.out',
+      overwrite: 'auto',
+      onComplete: () => {
+        frame.removeAttribute('data-moving')
+        gsap.fromTo(
+          corners,
+          { scale: 0.975 },
+          {
+            scale: 1,
+            duration: 0.1,
+            ease: 'back.out(1.2)',
+            clearProps: 'transform',
+            overwrite: 'auto',
+          },
+        )
+      },
+    })
   }, [])
 
   const activateTarget = useCallback(
-    (element: HTMLElement) => {
+    (element: HTMLElement, force = false) => {
       if (element.dataset.focusDisabled === 'true') return
+      if (activeTargetRef.current === element && !force) {
+        if (frameRef.current) frameRef.current.dataset.mode = modalityRef.current
+        return
+      }
       activeTargetRef.current = element
       activeObserverRef.current?.disconnect()
-      activeObserverRef.current = new ResizeObserver(() => positionFrame(element, true))
+      let observedRect = element.getBoundingClientRect()
+      activeObserverRef.current = new ResizeObserver(() => {
+        const nextRect = element.getBoundingClientRect()
+        const sizeChanged =
+          Math.abs(nextRect.width - observedRect.width) > 0.5 ||
+          Math.abs(nextRect.height - observedRect.height) > 0.5
+        observedRect = nextRect
+        if (sizeChanged) positionFrame(element, true)
+      })
       activeObserverRef.current.observe(element)
       positionFrame(element)
     },
@@ -199,7 +204,7 @@ export function FocalLockProvider({ children }: { children: React.ReactNode }) {
         event.target instanceof Element ? resolveFocusTarget(event.target) : null
       if (!target) return
       target.dataset.focusPoint = 'true'
-      activateTarget(target)
+      activateTarget(target, true)
     }
 
     const onKeyDown = (event: KeyboardEvent) => {

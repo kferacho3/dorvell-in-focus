@@ -31,7 +31,13 @@
   height: var(--focus-corner-length);
   border-color: var(--focus-ink);
   border-style: solid;
-  transition: transform 90ms var(--focus-snap-ease);
+  transition:
+    opacity var(--focus-fade-duration) var(--focus-ease),
+    transform 90ms var(--focus-snap-ease);
+}
+
+.focus-frame[data-moving='true'] .focus-frame__corner {
+  opacity: 0.86;
 }
 
 .focus-frame__corner--tl {

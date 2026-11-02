@@ -45,9 +45,9 @@ export function ChannelNav({
                 data-focus-label={channel.label}
                 data-focus-theme={channel.key}
                 data-focus-point={isCurrent || undefined}
-                data-focus-inset="4"
+                data-focus-inset="10"
                 className={cn(
-                  'type-kicker group relative inline-flex items-center gap-1.5 py-2',
+                  'type-kicker group relative inline-flex items-center py-2',
                   'transition-opacity duration-200',
                   isCurrent ? 'opacity-100' : 'opacity-65 hover:opacity-100',
                 )}
@@ -55,7 +55,7 @@ export function ChannelNav({
                 <span
                   aria-hidden
                   className={cn(
-                    'text-channel-accent font-[family-name:var(--font-mono)] text-[0.7em] leading-none',
+                    'text-channel-accent absolute -left-3 font-[family-name:var(--font-mono)] text-[0.7em] leading-none',
                     isCurrent ? 'opacity-100' : 'opacity-0',
                   )}
                 >
